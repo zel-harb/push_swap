@@ -61,34 +61,46 @@ void	ft_putstr_fd(char *s, int fd)
 		i++;
 	}
 }
+void displayList(t_list **current) {
+    t_list *temp = *current;  
+
+    while (temp != NULL) {
+        printf("%d\n", temp->value);
+        temp = temp->next;
+    }
+}
 int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
-
+	(void)argc;
     stack_a = (t_list *)malloc(sizeof(t_list));
 	stack_b = (t_list *)malloc(sizeof(t_list));
 	stack_a = NULL;
 	stack_b = NULL;
     full(&stack_a,argv);
-	full(&stack_b,argv);
-	t_list *current =stack_a;
-	t_list *current1 =stack_b;
-	t_list *z=stack_b;
-	//rr(stack_a,stack_b);
-	//rra(z);
-    while(current || z )
-    {
-		printf("%d  |  %d\n",current->value,z->value);
-        current = current->next;
-		z = z->next;
-    }
-	//  sa(stack_a);
-	// printf("--------------------- \n");
-	//   while(stack_a)
-    // {
-		
-    //     printf("%d \n",stack_a->value);
-    //      stack_a = stack_a->next;
-    // }
+   //displayList(&stack_a);
+	chismia(&stack_a,&stack_b);
+	//full(&stack_b,argv);
+	//t_list **current =stack_a;
+	//t_list **current1 =stack_b;
+	
+// 	pa(&stack_a,&stack_b);
+
+// 	pa(&stack_a,&stack_b);
+//  rra(&stack_a);
+	displayList(&stack_a);
+
+	// printf("--------------\n");
+	// displayList(&stack_b);
+// // pa(&stack_a,&stack_b);
+// // 	displayList(&stack_b);
+// printf("--------------");
+// pb(&stack_b,&stack_a);
+// 	displayList(&stack_a); 
+// 	printf("--------------");
+// 	displayList(&stack_b);
+	
+
+    
 }

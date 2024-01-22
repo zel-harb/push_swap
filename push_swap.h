@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include <stdio.h>
+#include <stdio.h> 
 # include <string.h>
 # include <unistd.h>
 //# include "../libft/libft.h"
@@ -15,19 +15,29 @@ void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 t_list	*ft_lstlast(t_list *lst);
 int	ft_lstsize(t_list *lst);
+void	ft_lstadd_front(t_list **lst, t_list *new);
 
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 //Swap
-int swap(t_list *stack_a);
-int sb(t_list *stack_b);
- int ss(t_list *stack_a,t_list *stack_b);
-int sa(t_list *stack_a);
+void swap(t_list *stack_a);
+void sb(t_list **stack_b);
+void sa(t_list **stack_a);
+void ss(t_list **stack_a,t_list **stack_b);
  //Rotatae
- int rotate(t_list *stack);
-int  ra(t_list *stack_a);
- int  rb(t_list *stack_b);
- int rr(t_list *stack_a,t_list *stack_b);
+ void rotate(t_list **stack);
+void  ra(t_list **stack_a);
+ void  rb(t_list **stack_b);
+ void rr(t_list **stack_a,t_list **stack_b);
  //R
-int	reverseRotate(t_list **stack);
- int	rra(t_list *stack_a);
+void	reverseRotate(t_list **stack);
+void	rra(t_list **stack_a);
+void	rrb(t_list **stack_b);
+//Push
+void push(t_list **stack_1,t_list **stack_2);
+void	pa(t_list **stack_a,t_list **stack_b);
+void	pb(t_list **stack_b,t_list **stack_a);
+//Sort
+int is_sorted(t_list *stack);
+void chismia(t_list **stack,t_list **stack_b);
+int get_max(t_list *stack);
