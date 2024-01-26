@@ -28,7 +28,7 @@ int get_max(t_list *stack)
 int get_min(t_list *stack)
 {
     int min;
-    min = 0;
+    min = stack->value;
     while (stack)
     {
         if(stack->value < min)
@@ -37,6 +37,16 @@ int get_min(t_list *stack)
     }
     return min;
     
+}
+int is_be(t_list *stack_a,int integer)
+{
+    while(stack_a)
+    {
+        if(integer==stack_a->value)
+         return 1;
+         stack_a=stack_a->next;
+    }
+    return 0;
 }
 void sort_3(t_list **stack)
 {
@@ -66,62 +76,47 @@ void push_three(t_list **stack_a,t_list **stack_b)
     }
 
 }
-// void sort_5(t_list **stack_a,t_list **stack_b)
-// {
-//     push_three(stack_a,stack_b);
-//         sort_3(stack_a);
-//      pa(stack_b,stack_a);
-//     if((*stack_a)->value > ft_lstlast(*stack_a)->value)
-//          ra(stack_a);
-//    else if((*stack_a)->value > (*stack_a)->next->value)
-//         sa(stack_a); 
-//     if((*stack_b)->value > (*stack_a)->value && (*stack_b)->value < ft_lstlast(*stack_a)->value  )
-//       ra(stack_a);
-//      pa(stack_b,stack_a);
-//     if((*stack_a)->value > ft_lstlast(*stack_a)->value)
-//         ra(stack_a);
-//     else if((*stack_a)->value > (*stack_a)->next->value)
-//       sa(stack_a);
+void mini_sort_5(t_list **stack_a,t_list **stack_b, int number)
+{
+     while(is_be(*stack_a,number))
+   {
+    if(number == (*stack_a)->value)
+    {
+        pb(stack_a,stack_b);
+        break;
+    }
+        else if(number ==(*stack_a)->next->value)
+        {
+        sa(stack_a);
+        pb(stack_a,stack_b);
+        break;
+        }
+        else
+        rra(stack_a);
+    }
+}
+void sort_5(t_list **stack_a,t_list **stack_b)
+{
+   int min;
+   int max;
+
+   min =get_min(*stack_a);
+   max =get_max(*stack_a);
+
+   mini_sort_5(stack_a,stack_b,max);
+   mini_sort_5(stack_a,stack_b,min);
+   sort_3(stack_a);
+   pa(stack_b,stack_a);
+   pa(stack_b,stack_a);
+   ra(stack_a);
+
     
   
 
-//  }
-// void sort_5(t_list **stack_a,t_list **stack_b)
-// {
-//     int min;
-//     int max;
-
-//     min=get_min(*stack_a);
-//     max=get_max(*stack_a);
-  
-//     if((*stack_a)->value == max)
-//         pa(stack_a,stack_b);
-//     else if((*stack_a)->next->value == max)
-//     {
-//         sa(stack_a);
-//         pa(stack_a,stack_b);
-//     }
-//     else if (ft_lstlast(*stack_a)->value == max)
-//     {
-//         rra(stack_a);
-//        pa(stack_a,stack_b);
-//     }
-//     else 
-//       pa(stack_a,stack_b);
-//   pa(stack_a,stack_b);
-//   sort_3(stack_a);
-//   if((*stack_b)->value == min)
-//         pb(stack_b,stack_a);
-//     else 
-//       pb(stack_b,stack_a);
-//     if(!is_sorted(*stack_a))
+ }
 
 
-   
-// }
-
-
-void chismia(t_list **stack,t_list **stack_b)
+void sort(t_list **stack,t_list **stack_b)
 {
     if(ft_lstsize(*stack)==2 && !is_sorted(*stack))
          sa(stack);

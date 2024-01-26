@@ -80,7 +80,7 @@ int	main(int argc, char **argv)
 	stack_b = NULL;
     full(&stack_a,argv);
    //displayList(&stack_a);
-	chismia(&stack_a,&stack_b);
+	sort(&stack_a,&stack_b);
 	//full(&stack_b,argv);
 	//t_list **current =stack_a;
 	//t_list **current1 =stack_b;
@@ -89,10 +89,13 @@ int	main(int argc, char **argv)
 
 // 	pa(&stack_a,&stack_b);
 //  rra(&stack_a);
+printf("--------------\n");
 	displayList(&stack_a);
+// printf("--------------");
 
-	// printf("--------------\n");
-	// displayList(&stack_b);
+
+//  printf("--------------\n");
+//  displayList(&stack_b);
 // // pa(&stack_a,&stack_b);
 // // 	displayList(&stack_b);
 // printf("--------------");
