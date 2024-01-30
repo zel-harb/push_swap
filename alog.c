@@ -104,9 +104,7 @@ void push_to_a(t_list **stack_a,t_list **stack_b,int *table,int size)
     index=size-1;
     int step;
     int size_list;
-    // int start ;
-    // start=0;
-  //  printf("--->%d\n ",table[index]);
+    
   size_list=ft_lstsize(*stack_b);
 step = push_first_element(stack_a,stack_b,table[index]);
 index--;
@@ -214,20 +212,21 @@ void algo_sort(t_list **stack_a,t_list **stack_b, int *table,int size)
     int end;
     int i;
     int value;
-
+    offset=8;
     i=0;
     mid = (size / 2) - 1;
-    offset=2;
+    int fix;
+    fix =0;
+    if(size >5)
+     offset=2;
+    if(size > 8)
+        offset=8;
+    if(size > 100)
+        offset=16;
+
     start= mid - offset;
     end =mid +offset;
-    //value=(*stack_a)->value;
-   // (*stack_b)=(*stack_b)->next;
-
-
-    // if(check(table,value,start,end)==1)
-    // {
-    //     printf("hi");
-    // }
+   
     while(ft_lstsize(*stack_a)!=0)
     {
           value=(*stack_a)->value;
