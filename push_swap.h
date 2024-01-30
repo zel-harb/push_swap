@@ -41,3 +41,6 @@ void	pb(t_list **stack_b,t_list **stack_a);
 int is_sorted(t_list *stack);
 void chismia(t_list **stack,t_list **stack_b);
 int get_max(t_list *stack);
+void algo_sort(t_list **stack_a,t_list **stack_b, int *table,int size);
+//Sort table
+void	ft_sort_int_tab(int *tab, int size);

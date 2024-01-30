@@ -95,6 +95,30 @@ void mini_sort_5(t_list **stack_a,t_list **stack_b, int number)
         rra(stack_a);
     }
 }
+void	ft_sort_int_tab(int *tab, int size)
+{
+	int	tmp;
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (i < size)
+	{
+		while (j < size)
+		{
+			if (tab[i] > tab[j])
+			{
+				tmp = tab[i];
+				tab[i] = tab[j];
+				tab[j] = tmp;
+			}
+			j++;
+		}
+		i++;
+		j = i + 1;
+	}
+}
 void sort_5(t_list **stack_a,t_list **stack_b)
 {
    int min;
@@ -116,7 +140,8 @@ void sort_5(t_list **stack_a,t_list **stack_b)
  }
 
 
-void sort(t_list **stack,t_list **stack_b)
+
+void chismia(t_list **stack,t_list **stack_b)
 {
     if(ft_lstsize(*stack)==2 && !is_sorted(*stack))
          sa(stack);
@@ -126,4 +151,5 @@ void sort(t_list **stack,t_list **stack_b)
     {
         sort_5(stack,stack_b);
     }
+    
 }

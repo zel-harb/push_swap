@@ -42,6 +42,17 @@ void full(t_list **stack_a,char **argv)
     
 
 }
+void full_array(int *table,int size,t_list *stack_a)
+{
+	int i;
+	i =0;
+	while (stack_a && i <size)
+	{
+		table[i]=stack_a->value;
+		stack_a=stack_a->next;
+		i++;
+	}
+}
 void	ft_putchar_fd(char c, int fd)
 {
 	if (fd < 0)
@@ -69,40 +80,47 @@ void displayList(t_list **current) {
         temp = temp->next;
     }
 }
+
 int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
+	int size;
+	int *table;
 	(void)argc;
     stack_a = (t_list *)malloc(sizeof(t_list));
 	stack_b = (t_list *)malloc(sizeof(t_list));
 	stack_a = NULL;
 	stack_b = NULL;
     full(&stack_a,argv);
-   //displayList(&stack_a);
-	sort(&stack_a,&stack_b);
-	//full(&stack_b,argv);
-	//t_list **current =stack_a;
-	//t_list **current1 =stack_b;
+    size =ft_lstsize(stack_a);
+	table=(int *)malloc(size * sizeof(int));
 	
-// 	pa(&stack_a,&stack_b);
+	full_array(table,size,stack_a);
+	ft_sort_int_tab(table,size);
 
-// 	pa(&stack_a,&stack_b);
-//  rra(&stack_a);
-printf("--------------\n");
-	displayList(&stack_a);
-// printf("--------------");
+	// if(ft_lstsize(stack_a) <= 5)
+	 // chismia(&stack_a,&stack_b);
+	// else if(ft_lstsize(stack_a) > 5)
+		// printf("-------------->%d \n",table[size-3]);
+		algo_sort(&stack_a,&stack_b,table,size);
+
+//   displayList(&stack_b);
+	// printf("-->%d",ft_lstsize(stack_a));
+	// stack_a=stack_a->next;
+	// printf("-->%d",ft_lstsize(stack_a));
+   //j  displayList(&stack_a);
+//   printf("--------------a\n");
+// displayList(&stack_a);
+// printf("-------------->\n");
+// displayList(&stack_b);
+// for(int i = 0;i <size; i++)
+// {
+// 	printf(" ---> %d\n",table[i]);
+// }
 
 
-//  printf("--------------\n");
-//  displayList(&stack_b);
-// // pa(&stack_a,&stack_b);
-// // 	displayList(&stack_b);
-// printf("--------------");
-// pb(&stack_b,&stack_a);
-// 	displayList(&stack_a); 
-// 	printf("--------------");
-// 	displayList(&stack_b);
+
 	
 
     
