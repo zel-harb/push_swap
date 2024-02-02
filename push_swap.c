@@ -76,47 +76,70 @@ void displayList(t_list **current) {
     t_list *temp = *current;  
 
     while (temp != NULL) {
-        printf("%d\n", temp->value);
+        printf("%d \n", temp->value);
         temp = temp->next;
     }
 }
+void full_moves(t_list **stack_a)
+{
+    int i = 0;
+    t_list *current = *stack_a; 
+
+    while (current)
+    {
+        current->moves = i;
+        current = current->next;
+        i++;
+    }
+}
+
 
 int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
-	int size;
+	int size_stack;
 	int *table;
 	(void)argc;
-    stack_a = (t_list *)malloc(sizeof(t_list));
-	stack_b = (t_list *)malloc(sizeof(t_list));
-	stack_a = NULL;
-	stack_b = NULL;
+    // stack_a = (t_list *)malloc(sizeof(t_list));
+	// stack_b = (t_list *)malloc(sizeof(t_list));
+	// stack_a = NULL;
+	// stack_b = NULL;
     full(&stack_a,argv);
-    size =ft_lstsize(stack_a);
-	table=(int *)malloc(size * sizeof(int));
+	full_moves(&stack_a);
+    size_stack =ft_lstsize(stack_a);
+	table=(int *)malloc(size_stack * sizeof(int));
 	
-	full_array(table,size,stack_a);
-	ft_sort_int_tab(table,size);
+	full_array(table,size_stack,stack_a);
+	
+	ft_sort_int_tab(table,size_stack);
 
 	// if(ft_lstsize(stack_a) <= 5)
 	 // chismia(&stack_a,&stack_b);
 	// else if(ft_lstsize(stack_a) > 5)
-		// printf("-------------->%d \n",table[size-3]);
-		algo_sort(&stack_a,&stack_b,table,size);
 
-//   displayList(&stack_b);
-	// printf("-->%d",ft_lstsize(stack_a));
-	// stack_a=stack_a->next;
-	// printf("-->%d",ft_lstsize(stack_a));
-   //j  displayList(&stack_a);
-//   printf("--------------a\n");
-// displayList(&stack_a);
-// printf("-------------->\n");
-// displayList(&stack_b);
-// for(int i = 0;i <size; i++)
+		//algo_sort(&stack_a,&stack_b,table,size_stack);
+		algoo_3(&stack_a,&stack_b,table,size_stack);
+	//    if(is_sorted(stack_a)==1)
+	//      printf("suffusl\n");
+	// pb(&stack_a,&stack_b);
+		printf("-------------->a \n");
+  displayList(&stack_a);
+//     //   if(is_sorted(stack_a)==1)
+// 	//      printf("\nssssssssl\n");
+//     // else 
+//     // printf("nnnnnnnnnnnnnnnnnnn\n");
+// 	// printf("-->%d",ft_lstsize(stack_a));
+// 	// stack_a=stack_a->next;
+// 	// printf("-->%d",ft_lstsize(stack_a));
+//    //j  displayList(&stack_a);
+  printf("\n--------------b\n");
+displayList(&stack_b);
+// printf("-------------->table\n");
+// // displayList(&stack_b);
+// for(int i = 0;i <size_stack; i++)
 // {
-// 	printf(" ---> %d\n",table[i]);
+// 	printf("\n ---> %d\n",table[i]);
 // }
 
 

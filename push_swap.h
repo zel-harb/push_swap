@@ -6,6 +6,7 @@
 typedef struct s_list
 {
 	int				value;
+	int 			moves;
 	struct s_list	*next;
 }   t_list;
 int	ft_atoi(char *str);
@@ -44,3 +45,12 @@ int get_max(t_list *stack);
 void algo_sort(t_list **stack_a,t_list **stack_b, int *table,int size);
 //Sort table
 void	ft_sort_int_tab(int *tab, int size);
+
+//algo 
+//void algo(t_list **stack_a,t_list **stack_b,int *table,int size);
+//void algo_1(t_list **stack_a,t_list **stack_b, int *table,int size_stack);
+void algoo_3(t_list **stack_a,t_list **stack_b, int *table,int size_stack);
+void full_moves(t_list **stack_a);
+
+void push_to_a(t_list **stack_a,t_list **stack_b,int *table,int size);
+int ft_check_max(t_list *stack,int max);

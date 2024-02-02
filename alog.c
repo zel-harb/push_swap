@@ -29,7 +29,7 @@ int check_all(int *table,t_list *stack, int start,int end)
            
         }
         start=s_start;
-        stack =stack->next;
+        stack =stack->next;       
         
     }
     return 0;
@@ -208,54 +208,70 @@ void algo_sort(t_list **stack_a,t_list **stack_b, int *table,int size)
 {
     int mid;
     int offset;
-    int start ;
+    int start;
     int end;
     int i;
     int value;
-    offset=8;
+    
     i=0;
-    mid = (size / 2) - 1;
-    int fix;
-    fix =0;
-    if(size >5)
-     offset=2;
-    if(size > 8)
-        offset=8;
-    if(size > 100)
-        offset=16;
+    mid = (size / 2);
+    offset=2;
+   
+    // if(size >5)
+    //  offset=2;
+    // if(size > 8)
+    //     offset=8;
+    // if(size > 50)
+    //     offset=11;
+    // if(size > 150)
+    //     offset=16;
 
     start= mid - offset;
     end =mid +offset;
+    if(start < 0)
+    start =0;
+    if(end >size)
+        end=size-1;
    
     while(ft_lstsize(*stack_a)!=0)
     {
           value=(*stack_a)->value;
-
+        
         while(check_all(table,*stack_a,start,end) != 0)
         {
             value=(*stack_a)->value;
             if(check(table,value,start,end)==1)
-            {
+            { 
                 pb(stack_a,stack_b);
             
             if(value < table[mid] && i == 1)
                 rb(stack_b);  
                 i=1; 
-
             }
             else
             ra(stack_a);
         }
         start-=offset;
         end+=offset;
-        if(start < 0 || end > size)
+        
+        if(start < 0)
         {
+
+       
          start =0;
-         end =size;
+         
         }
+        if(end > size)
+        {
+            end = size-1;
+           
+        }
+
     }
-    push_to_a(stack_a,stack_b,table,size);
+     push_to_a(stack_a,stack_b,table,size);
+    // if((*stack_a)->value >ft_lstlast(*stack_a)->value)
+    //   ra(stack_a);
     
-    
+
 
 }

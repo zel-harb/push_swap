@@ -4,26 +4,20 @@
 void rotate(t_list **stack)
 {
     if (*stack == NULL || (*stack)->next == NULL) {
-        // No rotation needed for empty or single-node list
         return;
     }
 
     t_list *current = *stack;
     t_list *tmpNode = *stack;
 
-    // Traverse the list to find the last node
     while (current->next != NULL)
     {
         current = current->next;
     }
 
-    // Assign the address of the first node to the last node
+    
     current->next = *stack;
-
-    // Update the head of the list to the second node
     *stack = tmpNode->next;
-
-    // Set the next of the original first node to NULL
     tmpNode->next = NULL;
 }
     

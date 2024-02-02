@@ -8,6 +8,7 @@ t_list	*ft_lstnew(int content)
 	if (new == NULL)
 		return (NULL);
 	new->value = content;
+	new->moves=0;
 	new->next = NULL;
 	return (new);
 }
