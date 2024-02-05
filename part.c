@@ -38,19 +38,19 @@ int  research(int *table,t_list *stack, int start,int end)
 void push_a_to_b1(t_list **stack_a,t_list **stack_b, int *table,int size_stack)
 {
     int mid;
-    int offset;
+    int offset=0;
     int start;
     int the_end;
     int moves;
     int i=0;
-
+    
     mid = (size_stack/2) - 1;
     if(size_stack > 5)
      offset=2;
     if(size_stack>50)
         offset=8;
     if(size_stack> 150)
-        offset= 11;
+        offset=16;
     
     start=mid - offset;
     the_end=mid +offset;
@@ -121,18 +121,18 @@ void push_a_to_b1(t_list **stack_a,t_list **stack_b, int *table,int size_stack)
     
      
 }
-int find_max(t_list *stack_b,int max)
-{
-    while(stack_b)
-    {
-        if (stack_b->value==max)
-            return (stack_b->moves);
-        stack_b=stack_b->next;
+// int find_max(t_list *stack_b,int max)
+// {
+//     while(stack_b)
+//     {
+//         if (stack_b->value==max)
+//             return (stack_b->moves);
+//         stack_b=stack_b->next;
         
-    }
-    return (-1);
+//     }
+//     return (-1);
 
-}
+// }
 void first_number(t_list **stack_a,t_list **stack_b,int max)
 {
 
@@ -168,13 +168,93 @@ void first_number(t_list **stack_a,t_list **stack_b,int max)
                 }
 }
 
+
+void push_element(t_list **stack_a,t_list **stack_b,int *table,int max, int *k)
+{
+    int find;
+
+
+    if((*stack_b)->value==table[max])
+    {
+            pa(stack_b,stack_a);
+    }
+
+    if(max !=0)
+    {
+        if((*stack_b)->value==table[max-1])
+        {
+            if((*stack_b)->value==table[max-1])
+            k++;
+            pa(stack_b,stack_a);
+        }
+    }
+    if(k != 0)
+    {
+        ra(stack_a);
+        full_moves(stack_b);
+        find=find_max(*stack_b,table[max]);
+        if(find==0)
+            pa(stack_b,stack_a);
+        else if(find == 1)
+        {
+            sb(stack_b);
+            pa(stack_b,stack_a);
+        }
+        else if(find > ft_lstsize(*stack_b)/2)
+        {
+             while( find > 0) 
+             {
+                rrb(stack_a);
+                find--;
+             }
+                     
+             pa(stack_b,stack_a); 
+        }
+        else
+        {
+            while( find >0)
+            {
+                rb(stack_a);
+                find--;
+            }
+            pa(stack_b,stack_a); 
+        } 
+                
+    }
+    if(ft_check_max(*stack_b, table[max]))
+    {
+        full_moves(stack_b);
+        find=find_max(*stack_b,table[max]);
+
+        if(find > ft_lstsize(*stack_b)/2)
+        {
+            while( find > 0) 
+            {
+                rrb(stack_a);
+                find--;
+            }
+            pa(stack_b,stack_a); 
+        }
+        else
+        {
+            while( find >0)
+            {
+                rb(stack_a);
+                find--;
+            }
+            pa(stack_b,stack_a); 
+        } 
+
+    }
+}
+
 void push_b_to_a(t_list **stack_a,t_list **stack_b,int *table,int size)
 {
     int max;
     int find;
     max =size-1;
     int k=0;
-   // mid =(size/2)-1;
+ 
    
    // printf("lstsize b is   zahirs312%d\n",ft_lstsize(*stack_b));
    first_number(stack_a,stack_b,table[max]);
@@ -183,100 +263,38 @@ void push_b_to_a(t_list **stack_a,t_list **stack_b,int *table,int size)
    
    max--;
    find=find_max(*stack_b,table[max]);
+    //  printf("first find max is  %d  \n",find);
    
-   while(ft_lstsize(*stack_b)!=0)
+   while(ft_lstsize(*stack_b))
    {
-      while(1)
+    // printf("first find max is bsa zahiraaaaaaaaaa  %d  \n",find);
+      while(ft_check_max(*stack_b,table[max]))
       {
-        if((*stack_b)->value==table[max] )
-        {
-            pa(stack_b,stack_a);
-        }
-        if(max !=0)
-        {
-        if((*stack_b)->value==table[max-1])
-        {
-            if((*stack_b)->value==table[max-1])
-            k++;
-            pa(stack_b,stack_a);
-        }
-        }
-       if(k != 0)
-       {
-        ra(stack_a);
-        full_moves(stack_b);
-        find=find_max(*stack_b,table[max]);
-        if(find==0)
-         pa(stack_b,stack_a);
-         else if(find == 1)
-         {
-            sb(stack_b);
-            pa(stack_b,stack_a);
-         }
-          else if(find > ft_lstsize(*stack_b)/2)
-                    {
-                    while( find > 0) 
-                    {
-                        rrb(stack_a);
-                        find--;
-                    }
-                     pa(stack_b,stack_a); 
-                    }
-                    else
-                    {
-                     while( find >0)
-                    {
-                        rb(stack_a);
-                        find--;
-                    }
-                     pa(stack_b,stack_a); 
-                    } 
-                
-       }
-       if(ft_check_max(*stack_b, table[max]))
-       {
-        full_moves(stack_b);
-        find=find_max(*stack_b,table[max]);
-        if(find > ft_lstsize(*stack_b)/2)
-                    {
-                    while( find > 0) 
-                    {
-                        rrb(stack_a);
-                        find--;
-                    }
-                     pa(stack_b,stack_a); 
-                    }
-                    else
-                    {
-                     while( find >0)
-                    {
-                        rb(stack_a);
-                        find--;
-                    }
-                     pa(stack_b,stack_a); 
-                    } 
-
-       }
+       push_element(stack_a,stack_b,table,max, &k);
+       
        max--;
+       if(max < 0  && ft_lstsize(*stack_b))
+       break; 
+       // printf(" bsa zahiraaaaaaaaaa  %d  \n",find);
       }
+    //   printf(" bsa zahiraaaaaaaaaa  %d  \n",find);
+    
        if(ft_check_max(*stack_a, table[max]) && k!=0)
       {
         // full_moves(stack_a);
         // find=find_max(*stack_b,max);
-        if(ft_lstlast(*stack_a)->value==table[max])
-            rra(stack_a);
+            if(ft_lstlast(*stack_a)->value==table[max])
+                rra(stack_a);
             
-            k--;
+                k--;
       }
-    //   else if(ft_check_max(*stack_b,int max))
-    //   {
-
-    //   }
-
-       max--;
+      max--;
+      if(max <= -1 && ft_lstsize(*stack_b))
+       break; 
     //    find=find_max(*stack_b,max);
-    if(ft_check_max(*stack_b,table[max])==1)
-     break ;
+    // if(ft_check_max(*stack_b,table[max])==1)
+    //  break ;
+     //printf("first find max is bsa zahiraaaaaaaaaa  %d  \n",find);
 
     }
 
@@ -288,9 +306,13 @@ void push_b_to_a(t_list **stack_a,t_list **stack_b,int *table,int size)
 void algoo_3(t_list **stack_a,t_list **stack_b, int *table,int size_stack)
 {  
     // printf("lstsize b is 1  %d\n",ft_lstsize(*stack_b));
-    push_a_to_b1(stack_a,stack_b,table,size_stack);
+    // push_a_to_b1(stack_a,stack_b,table,size_stack);
+    algo_sort(stack_a,stack_b,table,size_stack);
+//     printf("\n--------------b\n");
+// displayList(stack_b);
     // printf("lstsize b is %d\n",ft_lstsize(*stack_b));
-    push_b_to_a(stack_a,stack_b,table,size_stack);
+   // push_b_to_a(stack_a,stack_b,table,size_stack);
    //printf("lstsize b is %d",ft_lstsize(*stack_b));
+   first_function(stack_a,stack_b,table,size_stack);
 
 }

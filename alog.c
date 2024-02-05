@@ -268,7 +268,6 @@ void algo_sort(t_list **stack_a,t_list **stack_b, int *table,int size)
         }
 
     }
-     push_to_a(stack_a,stack_b,table,size);
     // if((*stack_a)->value >ft_lstlast(*stack_a)->value)
     //   ra(stack_a);
     

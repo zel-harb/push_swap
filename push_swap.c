@@ -83,7 +83,8 @@ void displayList(t_list **current) {
 void full_moves(t_list **stack_a)
 {
     int i = 0;
-    t_list *current = *stack_a; 
+    t_list *current ;
+	current= *stack_a; 
 
     while (current)
     {
@@ -119,12 +120,13 @@ int	main(int argc, char **argv)
 	// else if(ft_lstsize(stack_a) > 5)
 
 		//algo_sort(&stack_a,&stack_b,table,size_stack);
+		 
 		algoo_3(&stack_a,&stack_b,table,size_stack);
 	//    if(is_sorted(stack_a)==1)
 	//      printf("suffusl\n");
 	// pb(&stack_a,&stack_b);
-		printf("-------------->a \n");
-  displayList(&stack_a);
+// 		printf("\n-------------->a \n");
+//   displayList(&stack_a);
 //     //   if(is_sorted(stack_a)==1)
 // 	//      printf("\nssssssssl\n");
 //     // else 
@@ -133,18 +135,21 @@ int	main(int argc, char **argv)
 // 	// stack_a=stack_a->next;
 // 	// printf("-->%d",ft_lstsize(stack_a));
 //    //j  displayList(&stack_a);
-  printf("\n--------------b\n");
-displayList(&stack_b);
+ 
 // printf("-------------->table\n");
 // // displayList(&stack_b);
 // for(int i = 0;i <size_stack; i++)
 // {
 // 	printf("\n ---> %d\n",table[i]);
 // }
+    //   if(is_sorted(stack_a)==1)
+	//      printf("\nssssssssl\n");
+    // else 
+    // printf("nnnnnnnnnnnnnnnnnnn\n");
 
 
 
-	
+	 
 
     
 }

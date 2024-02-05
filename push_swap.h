@@ -54,3 +54,6 @@ void full_moves(t_list **stack_a);
 
 void push_to_a(t_list **stack_a,t_list **stack_b,int *table,int size);
 int ft_check_max(t_list *stack,int max);
+void first_function(t_list **stack_a,t_list **stack_b,int *tableu, int size);
+int find_max(t_list *stack,int max);
+void displayList(t_list **current);
