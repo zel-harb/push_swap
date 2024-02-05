@@ -102,10 +102,6 @@ int	main(int argc, char **argv)
 	int size_stack;
 	int *table;
 	(void)argc;
-    // stack_a = (t_list *)malloc(sizeof(t_list));
-	// stack_b = (t_list *)malloc(sizeof(t_list));
-	// stack_a = NULL;
-	// stack_b = NULL;
     full(&stack_a,argv);
 	full_moves(&stack_a);
     size_stack =ft_lstsize(stack_a);
@@ -114,42 +110,7 @@ int	main(int argc, char **argv)
 	full_array(table,size_stack,stack_a);
 	
 	ft_sort_int_tab(table,size_stack);
-
-	// if(ft_lstsize(stack_a) <= 5)
-	 // chismia(&stack_a,&stack_b);
-	// else if(ft_lstsize(stack_a) > 5)
-
-		//algo_sort(&stack_a,&stack_b,table,size_stack);
-		 
-		algoo_3(&stack_a,&stack_b,table,size_stack);
-	//    if(is_sorted(stack_a)==1)
-	//      printf("suffusl\n");
-	// pb(&stack_a,&stack_b);
-// 		printf("\n-------------->a \n");
-//   displayList(&stack_a);
-//     //   if(is_sorted(stack_a)==1)
-// 	//      printf("\nssssssssl\n");
-//     // else 
-//     // printf("nnnnnnnnnnnnnnnnnnn\n");
-// 	// printf("-->%d",ft_lstsize(stack_a));
-// 	// stack_a=stack_a->next;
-// 	// printf("-->%d",ft_lstsize(stack_a));
-//    //j  displayList(&stack_a);
+	algo_sort(&stack_a,&stack_b,table,size_stack);
  
-// printf("-------------->table\n");
-// // displayList(&stack_b);
-// for(int i = 0;i <size_stack; i++)
-// {
-// 	printf("\n ---> %d\n",table[i]);
-// }
-    //   if(is_sorted(stack_a)==1)
-	//      printf("\nssssssssl\n");
-    // else 
-    // printf("nnnnnnnnnnnnnnnnnnn\n");
-
-
-
-	 
-
     
 }

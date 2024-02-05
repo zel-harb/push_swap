@@ -2,17 +2,11 @@
 
 void push(t_list **stack_1,t_list **stack_2)
 {
-     if (*stack_1 == NULL) {
-        // Handle case where stack_1 is empty
+     if (*stack_1 == NULL)
         return;
-    }
 
     t_list *tmp = *stack_1;
-
-    // Remove the first node from stack_1
     *stack_1 = tmp->next;
-
-    // Add the removed node to the front of stack_2
    tmp->next = *stack_2;
     *stack_2 = tmp;
 }
