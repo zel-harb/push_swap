@@ -1,8 +1,8 @@
 #include "push_swap.h"
-int	ft_atoi( char *str)
+long	ft_atoi( char *str)
 {
 	int	i;
-	int	result;
+	long	result;
 	int	sign;
 
 	i = 0;
@@ -101,16 +101,42 @@ int	main(int argc, char **argv)
 	t_list	*stack_b;
 	int size_stack;
 	int *table;
-	(void)argc;
-    full(&stack_a,argv);
-	full_moves(&stack_a);
+
+	
+    if(argc ==2)
+	{
+		if(ft_full(&stack_a,argv))
+			return 0;
+		
+	}
+	else
+	{
+		if(check_error(argv,argc))
+		return 0;
+    	full(&stack_a,argv);
+		full_moves(&stack_a);
+	}
     size_stack =ft_lstsize(stack_a);
 	table=(int *)malloc(size_stack * sizeof(int));
 	
 	full_array(table,size_stack,stack_a);
-	
 	ft_sort_int_tab(table,size_stack);
-	algo_sort(&stack_a,&stack_b,table,size_stack);
- 
+	if(size_stack==1 || size_stack==0)
+		return 0;	
+	else if(size_stack==4 && !is_sorted(stack_a))
+	 algo_sort(&stack_a,&stack_b,table,size_stack);
+	else if(size_stack <=5 && !is_sorted(stack_a))
+		mini_sort(&stack_a,&stack_b);
+	else if (size_stack > 5 && !is_sorted(stack_a))
+		algo_sort(&stack_a,&stack_b,table,size_stack);
+    //  printf("----------------------->b\n");
+	//  displayList(&stack_b);
+	//  printf("----------------------->a\n");
+	//  displayList(&stack_a);
+//   if(is_sorted(stack_a)==1)
+// 	     printf("\nssssssssl\n");
+//     else 
+//     printf("nnnnnnnnnnnnnnnnnnn\n");
+		return 0;
     
 }

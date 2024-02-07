@@ -28,6 +28,7 @@ void push_three(t_list **stack_a,t_list **stack_b)
     }
 
 }
+
 void mini_sort_5(t_list **stack_a,t_list **stack_b, int number)
 {
      while(is_be(*stack_a,number))
@@ -93,13 +94,15 @@ void sort_5(t_list **stack_a,t_list **stack_b)
 
 
 
-void chismia(t_list **stack,t_list **stack_b)
+void mini_sort(t_list **stack,t_list **stack_b)
 {
-    if(ft_lstsize(*stack)==2 && !is_sorted(*stack))
+    if(ft_lstsize(*stack)==2)
          sa(stack);
-    else if(ft_lstsize(*stack)==3 && !is_sorted(*stack))
+    else if(ft_lstsize(*stack)==3)
         sort_3(stack);
-    else if(ft_lstsize(*stack)== 5 && !is_sorted(*stack))
+    // else if(ft_lstsize(*stack)==4)
+    //     sort_4(stack);
+    else if(ft_lstsize(*stack)==5)
     {
         sort_5(stack,stack_b);
     }

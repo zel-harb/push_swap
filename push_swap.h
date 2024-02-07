@@ -2,6 +2,7 @@
 #include <stdio.h> 
 # include <string.h>
 # include <unistd.h>
+#include <limits.h>
 //# include "../libft/libft.h"
 typedef struct s_list
 {
@@ -52,14 +53,21 @@ void	ft_sort_int_tab(int *tab, int size);
 // utilise
 int is_sorted(t_list *stack);
 int get_max(t_list *stack);
+void mini_sort(t_list **stack,t_list **stack_b);
 void algo_sort(t_list **stack_a,t_list **stack_b, int *table,int size_stack);
 void full_moves(t_list **stack_a);
 int get_min(t_list *stack);
 int is_be(t_list *stack_a,int integer);
-int	ft_atoi(char *str);
+long	ft_atoi(char *str);
 //display
 void displayList(t_list **current);
 
 //push
 void push_a_to_b(t_list **stack_a,t_list **stack_b, int *table,int size_stack);
 void push_b_to_a(t_list **stack_a,t_list **stack_b, int *table,int size_stack);
+//Error
+int check_error(char **argv,int argc);
+// int check_double(char **argv,int argc);
+char	**ft_split(char const *s, char c);
+int ft_full(t_list **stack,char **argv);
+void full(t_list **stack_a,char **argv);

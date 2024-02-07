@@ -29,12 +29,14 @@ void push_a_to_b(t_list **stack_a,t_list **stack_b, int *table,int size_stack)
     int the_end;
     
     mid = (size_stack/2) - 1;
+    if(size_stack >3)
+        offset=1;
     if(size_stack > 5)
-     offset=2;
+        offset=2;
     if(size_stack>50)
         offset=8;
     if(size_stack> 150)
-        offset=size_stack/8;
+        offset=29;
 
     start=mid - offset;
     the_end=mid +offset;
