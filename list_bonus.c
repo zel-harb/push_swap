@@ -1,6 +1,6 @@
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
-t_list	*ft_lstnew(int content)
+t_list	*ft_lstnew_bonus(int content)
 {
 	t_list	*new;
 
@@ -8,11 +8,10 @@ t_list	*ft_lstnew(int content)
 	if (new == NULL)
 		return (NULL);
 	new->value = content;
-	new->moves = 0;
 	new->next = NULL;
 	return (new);
 }
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstadd_back_bonus(t_list **lst, t_list *new)
 {
 	t_list	*p;
 
@@ -21,14 +20,14 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	p = *lst;
 	if (*lst)
 	{
-		p = ft_lstlast(p);
+		p = ft_lstlast_bonus(p);
 		p->next = new;
 	}
 	else
 		*lst = new;
 }
 
-t_list	*ft_lstlast(t_list *lst)
+t_list	*ft_lstlast_bonus(t_list *lst)
 {
 	t_list	*tmp;
 	int		size;
@@ -38,7 +37,7 @@ t_list	*ft_lstlast(t_list *lst)
 	i = 0;
 	if (tmp == NULL)
 		return (NULL);
-	size = ft_lstsize(tmp);
+	size = ft_lstsize_bonus(tmp);
 	while (i < size - 1)
 	{
 		tmp = tmp->next;
@@ -46,7 +45,7 @@ t_list	*ft_lstlast(t_list *lst)
 	}
 	return (tmp);
 }
-void	ft_lstadd_front(t_list **lst, t_list *new)
+void	ft_lstadd_front_bonus(t_list **lst, t_list *new)
 {
 	if (lst == NULL || new == NULL)
 		return ;
@@ -54,7 +53,7 @@ void	ft_lstadd_front(t_list **lst, t_list *new)
 	*lst = new;
 }
 
-int	ft_lstsize(t_list *lst)
+int	ft_lstsize_bonus(t_list *lst)
 {
 	t_list *tmp;
 	int i;

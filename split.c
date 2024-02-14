@@ -1,4 +1,5 @@
 #include "push_swap.h"
+
 static char	**ft_free(char **s, int j)
 {
 	int	i;
@@ -13,7 +14,7 @@ static char	**ft_free(char **s, int j)
 	return (NULL);
 }
 
-static int	count_words(char const *s, char c)
+int	count_words(char const *s, char c)
 {
 	int	i;
 	int	cmp;
@@ -94,32 +95,84 @@ char	**ft_split(char const *s, char c)
 	word = set_word(s, c, len);
 	return (word);
 }
-void full_split(t_list **stack_a,char **argv)
+void	full_split(t_list **stack_a, char **argv)
 {
-    t_list *new;
-    int i;
-    i=0;
-    while(argv[i])
-    {
-        new = ft_lstnew(ft_atoi(argv[i]));
+	t_list	*new;
+	int		i;
+
+	i = 0;
+	while (argv[i])
+	{
+		new = ft_lstnew(ft_atoi(argv[i]));
 		ft_lstadd_back(stack_a, new);
 		i++;
 	}
+}
+int valide_args(char **argv ,int argc)
+{
+	int i;
+	int size;
+	int k;
+	int j;
+	j=0;
+	i = 0;
+	size=ft_strlen(argv[i]);
+	while(size==0 && i < argc)
+	{
+		if(i < argc)
+			i++;
+		size=ft_strlen(argv[i]);
+	}
+	while(argv[i] && i < argc)
+	{
+		while(argv[i][j])
+		{
+			if(argv[i][j]==' ')
+				k++;
+			j++;
+		}
+		if(k==size)
+			return 0;
+		k=0;
+		j=0;
+		i++;
+		size=ft_strlen(argv[i]);
+		if(i < argc)
+		{
+		while(size==0 && i < argc)
+		{
+			if(i < argc)
+			i++;
+			size=ft_strlen(argv[i]);
+		}
+		}
 
-    // stack_a->value= atoi(argv[i]);
-    // stack_a->next;
-    // i++;
-    
+	}
+	return 1;
 
 }
-int ft_full(t_list **stack,char **argv)
+int	ft_full(t_list **stack, char **argv,int argc)
 {
-    char **str;
-	int count;
-    str=ft_split(argv[1],' ');
-    count =count_words(argv[1],' ');
-   if(check_error(str,count))
-			return 1;
-    full_split(stack,str);
-	return 0;
+	char	**str;
+	int		count;
+	int		i;
+
+	i = 1;
+	if(valide_args(argv,argc)==0)
+	 {
+		ft_putstr_fd("Error\n", 1);
+		return 1;
+	 }
+	while (argv[i])
+	{
+		str = ft_split(argv[i], ' ');
+		count = count_words(argv[i], ' ');
+		if (check_error(str, count))
+			return (1);
+		full_split(stack, str);
+		i++;
+	}
+	if (check_double(*stack))
+		return (1);
+	return (0);
 }
