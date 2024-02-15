@@ -40,12 +40,11 @@ int	ft_strcmp(char *s1, char *name_moves)
 		return (0);
 	return (1);
 }
-int	check_valid_moves(void)
+int valid_moves(char *str)
 {
-	char	*line;
-	int		i;
 	char	*name_moves[12];
-
+	int i;
+	i=0;
 	name_moves[0] = "sa\n";
 	name_moves[1] = "sb\n";
 	name_moves[2] = "ss\n";
@@ -58,21 +57,26 @@ int	check_valid_moves(void)
 	name_moves[9] = "rrb\n";
 	name_moves[10] = "rrr\n";
 	name_moves[11] = NULL;
+	while(name_moves[i])
+	{
+		if(ft_strcmp(str,name_moves[i])==0)
+			return 0;
+		i++;
+	}
+	return 1;
+}
+int	check_valid_moves(void)
+{
+	char	*line;
 	line = get_next_line(0);
-	i = 0;
 	while (line)
 	{
-		while (name_moves[i])
+		if(valid_moves(line)==0)
 		{
-			if (ft_strcmp(line, name_moves[i]) == 1)
-			{
-				return (1);
-				break ;
-			}
-			i++;
+			line=get_next_line(0);
 		}
-		line = get_next_line(0);
-		i = 0;
+		else
+			return 1;
 	}
 	return (0);
 }
@@ -83,6 +87,7 @@ void	ft_push(t_list **stack_a, t_list **stack_b)
 	line = get_next_line(0);
 	while (line)
 	{
+		
 		if (ft_strcmp(line, "sa\n") == 0)
 			sa_bonus(stack_a);
 		else if (ft_strcmp(line, "sb\n") == 0)
@@ -103,8 +108,8 @@ void	ft_push(t_list **stack_a, t_list **stack_b)
 			rrb_bonus(stack_b);
 		else if (ft_strcmp(line, "rra\n") == 0)
 			rra_bonus(stack_a);
-		//  else if(ft_strcmp(line,name_moves[10])==0)
-		//     rrr_bonus(stack_b);
+		 else if(ft_strcmp(line,"rrr\n")==0)
+		    rrr_bonus(stack_a,stack_b);
 		line = get_next_line(0);
 	}
 }
@@ -114,11 +119,20 @@ int	main(int argc, char **argv)
 	t_list *stack_a;
 	t_list *stack_b;
 	(void)argc;
-
+    if(argc==1)
+		return 0;
 	if (ft_full_bonus(&stack_a, argv,argc) == 1)
 		return (0);
-	// if(check_valid_moves()==0)
-	//     return (0);
+	if(check_valid_moves()==1)
+	{
+		ft_putstr_fd_bonus("Error\n", 1);
+	    return (0);
+	}
+	if(is_sorted_bonus(stack_a) == 1)
+	{
+		ft_putstr_fd_bonus("OK\n", 1);
+		return 0;
+	}
 	ft_push(&stack_a, &stack_b);
 	if (is_sorted_bonus(stack_a) == 1 && !stack_b)
 		ft_putstr_fd_bonus("OK\n", 1);

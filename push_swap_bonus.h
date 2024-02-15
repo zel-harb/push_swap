@@ -24,6 +24,7 @@ void				pa_bonus(t_list **stack_a, t_list **stack_b);
 void				pb_bonus(t_list **stack_b, t_list **stack_a);
 void				rra_bonus(t_list **stack_a);
 void				rrb_bonus(t_list **stack_b);
+void	rrr_bonus(t_list **stack_a,t_list **stack_b);
 void				ra_bonus(t_list **stack_a);
 void				rb_bonus(t_list **stack_b);
 void				rr_bonus(t_list **stack_a, t_list **stack_b);

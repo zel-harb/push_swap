@@ -96,10 +96,18 @@ int	check_non_number(char **argv, int argc)
 		j = 0;
 		while (argv[i][j])
 		{
-			if ((argv[i][j] < '0' || argv[i][j] > '9') && argv[i][j] != '-')
+			if ((argv[i][j] < '0' || argv[i][j] > '9') && argv[i][j] != '-' && argv[i][j] != '+')
 			{
 				ft_putstr_fd_bonus("Error\n", 1);
 				return (1);
+			}
+			if(argv[i][j]=='+')
+			{
+				if(argv[i][j+1] <'0'||argv[i][j+1]>'9')
+				{
+					ft_putstr_fd_bonus("Error\n", 1);
+					return (1);
+				}	
 			}
 			j++;
 		}
@@ -299,8 +307,6 @@ int	ft_full_bonus(t_list **stack, char **argv,int argc)
 	 }
 	while (argv[i])
 	{
-		//  printf("zahira\n");
-		
 		str = ft_split(argv[i], ' ');
 		count = count_words(argv[i], ' ');
 

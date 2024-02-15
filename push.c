@@ -45,7 +45,7 @@ void	push_a_to_b(t_list **stack_a, t_list **stack_b, int *table,
 	{
 		if (ft_lstsize(*stack_a) == 1)
 			pb(stack_a, stack_b);
-		while (ft_lstsize(*stack_b) < the_end - start)
+		while (ft_lstsize(*stack_b) < the_end - start+1)
 		{
 			if ((*stack_a)->value >= table[start]
 				&& (*stack_a)->value <= table[the_end])
@@ -106,7 +106,7 @@ void	push_b_to_a(t_list **stack_a, t_list **stack_b, int *table,
 				}
 			}
 			if (!ft_check_max(*stack_b, table[max]))
-				max--;
+				max--;	
 		}
 	}
 }

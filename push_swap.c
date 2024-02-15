@@ -103,8 +103,8 @@ int	main(int argc, char **argv)
 	int		*table;
 
 	(void)argc;
-	// if(argc ==2)
-	// {
+	if(argc ==1)
+		return 0;
 	if (ft_full(&stack_a, argv,argc) == 1)
 		return (0);
 	// }
