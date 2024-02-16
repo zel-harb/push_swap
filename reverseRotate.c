@@ -20,6 +20,7 @@ void	reverseRotate(t_list **stack)
 	}
 	tail->next = *stack;
 	*stack = tail;
+	
 }
 void	rra(t_list **stack_a)
 {

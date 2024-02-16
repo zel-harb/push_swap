@@ -119,15 +119,16 @@ int valide_args(char **argv ,int argc)
 	k=0;
 	size=ft_strlen(argv[i]);
 	if(size==0)
-		return 0;
-	i++;	
+		return 0;	
 	while(size!=0 && i < argc)
 	{
+		i++;
 		size=ft_strlen(argv[i]);
 		if(size==0)
 			return 0;
 			i++;	
 	}
+	i=0;
 	while(argv[i] && i < argc)
 	{
 		size=ft_strlen(argv[i]);
@@ -164,12 +165,13 @@ int	ft_full(t_list **stack, char **argv,int argc)
 	int		i;
 
 	i = 1;
-	if(valide_args(argv,argc)==0)
-	 {
-		ft_putstr_fd("Error\n", 1);
-		return 1;
-	 }
-	while (argv[i])
+	(void)argc;
+	// if(valide_args(argv,argc)==0)
+	//  {
+	// 	ft_putstr_fd("Error\n", 1);
+	// 	return 1;
+	//  }
+	 while (argv[i])
 	{
 		str = ft_split(argv[i], ' ');
 		count = count_words(argv[i], ' ');

@@ -23,11 +23,13 @@ static void	reverseRotate(t_list **stack)
 {
 	t_list	*head;
 	t_list	*tail;
+	
 
 	head = *stack;
-	if(!(*stack) || ft_lstsize_bonus(*stack)==1)
-		return;
+    if(!head || head->next==NULL)
+        return;
 	tail = ft_lstlast_bonus(head);
+
 	while (head)
 	{
 		if (head->next->next == NULL)
@@ -39,19 +41,23 @@ static void	reverseRotate(t_list **stack)
 	}
 	tail->next = *stack;
 	*stack = tail;
+	
 }
 void	rra_bonus(t_list **stack_a)
 {
 	reverseRotate(stack_a);
+	
 }
 void	rrb_bonus(t_list **stack_b)
 {
 	reverseRotate(stack_b);
 }
-void	rrr_bonus(t_list **stack_a,t_list **stack_b)
+void rrr_bonus(t_list **stack_a,t_list **stack_b)
 {
-	reverseRotate(stack_a);
+
 	reverseRotate(stack_b);
+	reverseRotate(stack_a);
+
 }
 static void	rotate(t_list **stack)
 {

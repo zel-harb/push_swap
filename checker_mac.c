@@ -2,6 +2,8 @@
 
 int	is_sorted_bonus(t_list *stack)
 {
+	if(stack==NULL)
+		return 0;
 	while (stack->next != NULL)
 	{
 		if (stack->value > stack->next->value)
@@ -65,30 +67,22 @@ int valid_moves(char *str)
 	}
 	return 1;
 }
-int	check_valid_moves(void)
+int	check_valid_moves(char *line)
 {
-	char	*line;
-	line = get_next_line(0);
-	while (line)
-	{
-		if(valid_moves(line)==0)
-		{
-			line=get_next_line(0);
-		}
-		else
-			return 1;
-	}
+	if(valid_moves(line)!=0)
+		return 1;
 	return (0);
 }
-void	ft_push(t_list **stack_a, t_list **stack_b)
+int	ft_push(t_list **stack_a, t_list **stack_b)
 {
 	char	*line;
 
 	line = get_next_line(0);
 	while (line)
 	{
-		
-		if (ft_strcmp(line, "sa\n") == 0)
+		if(check_valid_moves(line)!=0)
+			return 1;
+		else if (ft_strcmp(line, "sa\n") == 0)
 			sa_bonus(stack_a);
 		else if (ft_strcmp(line, "sb\n") == 0)
 			sb_bonus(stack_b);
@@ -104,16 +98,27 @@ void	ft_push(t_list **stack_a, t_list **stack_b)
 			rb_bonus(stack_b);
 		else if (ft_strcmp(line, "rr\n") == 0)
 			rr_bonus(stack_a, stack_b);
-		else if (ft_strcmp(line, "rrb\n") == 0)
-			rrb_bonus(stack_b);
-		else if (ft_strcmp(line, "rra\n") == 0)
+		else if (ft_strcmp(line,"rra\n") == 0)
 			rra_bonus(stack_a);
-		 else if(ft_strcmp(line,"rrr\n")==0)
+		else if (ft_strcmp(line,"rrb\n") == 0)
+			rrb_bonus(stack_b);
+		else  if(ft_strcmp(line,"rrr\n")==0)
 		    rrr_bonus(stack_a,stack_b);
 		line = get_next_line(0);
 	}
+	return 0;
 }
+void	displayList_list(t_list **current)
+{
+	t_list	*temp;
 
+	temp = *current;
+	while (temp != NULL)
+	{
+		printf("%d \n", temp->value);
+		temp = temp->next;
+	}
+}
 int	main(int argc, char **argv)
 {
 	t_list *stack_a;
@@ -123,20 +128,23 @@ int	main(int argc, char **argv)
 		return 0;
 	if (ft_full_bonus(&stack_a, argv,argc) == 1)
 		return (0);
-	if(check_valid_moves()==1)
-	{
-		ft_putstr_fd_bonus("Error\n", 1);
-	    return (0);
-	}
 	if(is_sorted_bonus(stack_a) == 1)
 	{
 		ft_putstr_fd_bonus("OK\n", 1);
 		return 0;
 	}
-	ft_push(&stack_a, &stack_b);
+	if(ft_push(&stack_a, &stack_b)==1)
+	{
+		ft_putstr_fd_bonus("Error\n", 1);
+	    return (0);
+	}
 	if (is_sorted_bonus(stack_a) == 1 && !stack_b)
 		ft_putstr_fd_bonus("OK\n", 1);
 	else
 		ft_putstr_fd_bonus("KO\n", 1);
+	// displayList_list(&stack_a);
+	// printf("stack _b\n");
+	// displayList_list(&stack_b);
+		
 	return (0);
 }

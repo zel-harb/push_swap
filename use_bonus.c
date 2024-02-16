@@ -257,16 +257,22 @@ int valide_args_bonus(char **argv ,int argc)
 	int k;
 	int j;
 	j=0;
-	i = 1;
+	i =1;
+	k=0;
 	size=ft_strlen_bonus(argv[i]);
-	while(size==0 && i < argc)
+	if(size==0)
+		return 0;	
+	while(size!=0 && i < argc)
 	{
-		if(i < argc)
-			i++;
 		size=ft_strlen_bonus(argv[i]);
+		if(size==0)
+			return 0;
+			i++;	
 	}
+	i=1;
 	while(argv[i] && i < argc)
 	{
+		size=ft_strlen_bonus(argv[i]);
 		while(argv[i][j])
 		{
 			if(argv[i][j]==' ')
@@ -274,20 +280,10 @@ int valide_args_bonus(char **argv ,int argc)
 			j++;
 		}
 		if(k==size)
-			return 0;
+			return 0;	
 		k=0;
 		j=0;
 		i++;
-		size=ft_strlen_bonus(argv[i]);
-		if(i < argc)
-		{
-		while(size==0 && i < argc)
-		{
-			if(i < argc)
-			i++;
-			size=ft_strlen_bonus(argv[i]);
-		}
-		}
 
 	}
 	return 1;
