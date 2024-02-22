@@ -38,7 +38,7 @@ t_list	*ft_lstlast_bonus(t_list *lst)
 	if (tmp == NULL)
 		return (NULL);
 	size = ft_lstsize_bonus(tmp);
-	while (i < size - 1)
+	while (tmp && tmp->next)
 	{
 		tmp = tmp->next;
 		i++;

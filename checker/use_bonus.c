@@ -96,18 +96,19 @@ int	check_non_number(char **argv, int argc)
 		j = 0;
 		while (argv[i][j])
 		{
-			if ((argv[i][j] < '0' || argv[i][j] > '9') && argv[i][j] != '-' && argv[i][j] != '+')
+			if ((argv[i][j] < '0' || argv[i][j] > '9') && argv[i][j] != '-'
+				&& argv[i][j] != '+')
 			{
 				ft_putstr_fd_bonus("Error\n", 1);
 				return (1);
 			}
-			if(argv[i][j]=='+')
+			if (argv[i][j] == '+')
 			{
-				if(argv[i][j+1] <'0'||argv[i][j+1]>'9')
+				if (argv[i][j + 1] < '0' || argv[i][j + 1] > '9')
 				{
 					ft_putstr_fd_bonus("Error\n", 1);
 					return (1);
-				}	
+				}
 			}
 			j++;
 		}
@@ -250,57 +251,56 @@ void	full_split(t_list **stack_a, char **argv)
 		i++;
 	}
 }
-int valide_args_bonus(char **argv ,int argc)
+int	valide_args_bonus(char **argv, int argc)
 {
-	int i;
-	int size;
-	int k;
-	int j;
-	j=0;
-	i =1;
-	k=0;
-	size=ft_strlen_bonus(argv[i]);
-	if(size==0)
-		return 0;	
-	while(size!=0 && i < argc)
+	int	i;
+	int	size;
+	int	k;
+	int	j;
+
+	j = 0;
+	i = 1;
+	k = 0;
+	size = ft_strlen_bonus(argv[i]);
+	if (size == 0)
+		return (0);
+	while (size != 0 && i < argc)
 	{
-		size=ft_strlen_bonus(argv[i]);
-		if(size==0)
-			return 0;
-			i++;	
+		size = ft_strlen_bonus(argv[i]);
+		if (size == 0)
+			return (0);
+		i++;
 	}
-	i=1;
-	while(argv[i] && i < argc)
+	i = 1;
+	while (argv[i] && i < argc)
 	{
-		size=ft_strlen_bonus(argv[i]);
-		while(argv[i][j])
+		size = ft_strlen_bonus(argv[i]);
+		while (argv[i][j])
 		{
-			if(argv[i][j]==' ')
+			if (argv[i][j] == ' ')
 				k++;
 			j++;
 		}
-		if(k==size)
-			return 0;	
-		k=0;
-		j=0;
+		if (k == size)
+			return (0);
+		k = 0;
+		j = 0;
 		i++;
-
 	}
-	return 1;
-
+	return (1);
 }
-int	ft_full_bonus(t_list **stack, char **argv,int argc)
+int	ft_full_bonus(t_list **stack, char **argv, int argc)
 {
 	char **str;
 	int count;
 	int i;
-	
+
 	i = 1;
-	if(valide_args_bonus(argv,argc)==0)
-	 {
+	if (valide_args_bonus(argv, argc) == 0)
+	{
 		ft_putstr_fd_bonus("Error\n", 1);
-		return 1;
-	 }
+		return (1);
+	}
 	while (argv[i])
 	{
 		str = ft_split(argv[i], ' ');

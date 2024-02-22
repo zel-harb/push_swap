@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-static char	**ft_free(char **s, int j)
+ char	**ft_free(char **s, int j)
 {
 	int	i;
 
@@ -97,90 +97,84 @@ char	**ft_split(char const *s, char c)
 }
 void	full_split(t_list **stack_a, char **argv)
 {
-	t_list	*new;
 	int		i;
-
+    t_list	*new;
 	i = 0;
 	while (argv[i])
 	{
+		
 		new = ft_lstnew(ft_atoi(argv[i]));
 		ft_lstadd_back(stack_a, new);
 		i++;
+		//  freeList(new);
+		
 	}
-}
-int valide_args(char **argv ,int argc)
-{
-	int i;
-	int size;
-	int k;
-	int j;
-	j=0;
-	i =1;
-	k=0;
-	size=ft_strlen(argv[i]);
-	if(size==0)
-		return 0;	
-	while(size!=0 && i < argc)
-	{
-		i++;
-		size=ft_strlen(argv[i]);
-		if(size==0)
-			return 0;
-			i++;	
-	}
-	i=0;
-	while(argv[i] && i < argc)
-	{
-		size=ft_strlen(argv[i]);
-		while(argv[i][j])
-		{
-			if(argv[i][j]==' ')
-				k++;
-			j++;
-		}
-		if(k==size)
-			return 0;	
-		k=0;
-		j=0;
-		i++;
-		// size=ft_strlen(argv[i]);
-		// if(i < argc)
-		// {
-		// // while(size==0 && i < argc)
-		// // {
-		// // 	if(i < argc)
-		// // 	i++;
-		// // 	size=ft_strlen(argv[i]);
-		// // }
-		// }
 
-	}
-	return 1;
-
+	
 }
-int	ft_full(t_list **stack, char **argv,int argc)
+// int	valide_args(char **argv, int argc)
+// {
+// 	int	i;
+// 	int	size;
+// 	int	k;
+// 	int	j;
+
+// 	j = 0;
+// 	i = 1;
+// 	k = 0;
+// 	size = ft_strlen(argv[i]);
+// 	if (size == 0)
+// 		return (0);
+// 	while (size != 0 && i < argc)
+// 	{
+// 		i++;
+// 		size = ft_strlen(argv[i]);
+// 		if (size == 0)
+// 			return (0);
+// 		i++;
+// 	}
+// 	i = 0;
+// 	while (argv[i] && i < argc)
+// 	{
+// 		size = ft_strlen(argv[i]);
+// 		while (argv[i][j])
+// 		{
+// 			if (argv[i][j] == ' ')
+// 				k++;
+// 			j++;
+// 		}
+// 		if (k == size)
+// 			return (0);
+// 		k = 0;
+// 		j = 0;
+// 		i++;
+// 	}
+// 	return (1);
+// }
+int	ft_full(t_list **stack, char **argv)
 {
 	char	**str;
 	int		count;
 	int		i;
 
 	i = 1;
-	(void)argc;
-	// if(valide_args(argv,argc)==0)
-	//  {
-	// 	ft_putstr_fd("Error\n", 1);
-	// 	return 1;
-	//  }
-	 while (argv[i])
+	while (argv[i])
 	{
 		str = ft_split(argv[i], ' ');
 		count = count_words(argv[i], ' ');
 		if (check_error(str, count))
+		{
+			ft_free(str,count);
 			return (1);
+		}
 		full_split(stack, str);
+		ft_free(str,count);
 		i++;
 	}
 	if (check_double(*stack))
+	{
+		// ft_lstclear(stack,del);
 		return (1);
+	}
 	return (0);
 }

@@ -42,7 +42,7 @@ void				rr(t_list **stack_a, t_list **stack_b);
 void				reverseRotate(t_list **stack);
 void				rra(t_list **stack_a);
 void				rrb(t_list **stack_b);
-void	rrr(t_list **stack_a,t_list **stack_b);
+void				rrr(t_list **stack_a, t_list **stack_b);
 // Push
 void				push(t_list **stack_1, t_list **stack_2);
 void				pa(t_list **stack_a, t_list **stack_b);
@@ -50,23 +50,23 @@ void				pb(t_list **stack_b, t_list **stack_a);
 
 // Sort
 int					is_sorted(t_list *stack);
-void				algo_sort(t_list **stack_a, t_list **stack_b, int *table,
-						int size);
+// void				algo_sort(t_list **stack_a, t_list **stack_b,
+// 						int size);
 void				ft_sort_int_tab(int *tab, int size);
 
 // utilise
 int					is_sorted(t_list *stack);
 int					get_max(t_list *stack);
 void				mini_sort(t_list **stack, t_list **stack_b);
-void				algo_sort(t_list **stack_a, t_list **stack_b, int *table,
-						int size_stack);
+void				algo_sort(t_list **stack_a, t_list **stack_b,int *table
+						,int size_stack);
 void				full_moves(t_list **stack_a);
 int					get_min(t_list *stack);
 int					is_be(t_list *stack_a, int integer);
 long				ft_atoi(char *str);
 // display
 void				displayList(t_list **current);
-
+void	full_array(int *table, int size, t_list *stack_a);
 // push
 void				push_a_to_b(t_list **stack_a, t_list **stack_b, int *table,
 						int size_stack);
@@ -76,11 +76,18 @@ void				push_b_to_a(t_list **stack_a, t_list **stack_b, int *table,
 int					check_error(char **argv, int argc);
 // int check_double(char **argv,int argc);
 char				**ft_split(char const *s, char c);
-int					ft_full(t_list **stack, char **argv,int argc);
+int					ft_full(t_list **stack, char **argv);
 void				full(t_list **stack_a, char **argv);
 void				full_split(t_list **stack_a, char **argv);
 int					count_words(char const *s, char c);
 int					check_double(t_list *stack);
-size_t	ft_strlen(char *str);
+size_t				ft_strlen(char *str);
+// free
 
+// void				ft_lstdelone(t_list *lst);
+// void				del(void * c);
+// void	ft_lstclear1(t_list **lst);
+// void	ft_lstclear(t_list **lst, void (*del)(void *));
+// char	**ft_free(char **s, int j);
+void freeList(t_list* head) ;
 #endif

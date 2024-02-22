@@ -9,7 +9,7 @@ long	ft_atoi(char *str)
 	i = 0;
 	result = 0;
 	sign = 1;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+	while ( str[i] == 32)
 		i++;
 	if (str[i] == 45 || str[i] == 43)
 	{
@@ -21,23 +21,16 @@ long	ft_atoi(char *str)
 	{
 		result *= 10;
 		result += str[i] - 48;
+		if(result > INT_MAX || result < INT_MIN)
+		{
+			// system("leaks push_swap");
+			return((write(1,"Error\n",6)),exit(0),0);
+		}
 		i++;
 	}
 	return (result * sign);
 }
-void	full(t_list **stack_a, char **argv)
-{
-	t_list	*new;
-	int		i;
 
-	i = 1;
-	while (argv[i])
-	{
-		new = ft_lstnew(ft_atoi(argv[i]));
-		ft_lstadd_back(stack_a, new);
-		i++;
-	}
-}
 void	full_array(int *table, int size, t_list *stack_a)
 {
 	int	i;
@@ -69,17 +62,7 @@ void	ft_putstr_fd(char *s, int fd)
 		i++;
 	}
 }
-void	displayList(t_list **current)
-{
-	t_list	*temp;
 
-	temp = *current;
-	while (temp != NULL)
-	{
-		printf("%d \n", temp->value);
-		temp = temp->next;
-	}
-}
 void	full_moves(t_list **stack_a)
 {
 	int		i;
@@ -100,40 +83,40 @@ int	main(int argc, char **argv)
 	t_list	*stack_a;
 	t_list	*stack_b;
 	int		size_stack;
-	int		*table;
+	int *table;
 
 	(void)argc;
-	if(argc ==1)
-		return 0;
-	if (ft_full(&stack_a, argv,argc) == 1)
+	if (argc == 1)
 		return (0);
-	// }
-	// else
-	// {
-	// 	if(check_error(argv,argc,1,2))
-	// 	return (0);
-	// 	full(&stack_a,argv);
-	// 	full_moves(&stack_a);
-	// }
+	if (ft_full(&stack_a, argv) == 1)
+	{
+		 freeList(stack_a);
+		//  system("leaks push_swap");
+		return (0);
+	}
 	size_stack = ft_lstsize(stack_a);
+	
+	if (size_stack == 1 || size_stack == 0)
+	{
+		if(size_stack == 1 )
+		 freeList(stack_a);
+		//  system("leaks push_swap");
+		return (0);
+	}
 	table = (int *)malloc(size_stack * sizeof(int));
 	full_array(table, size_stack, stack_a);
 	ft_sort_int_tab(table, size_stack);
-	if (size_stack == 1 || size_stack == 0)
-		return (0);
-	else if (size_stack == 4 && !is_sorted(stack_a))
-		algo_sort(&stack_a, &stack_b, table, size_stack);
+
+	 if (size_stack == 4 && !is_sorted(stack_a))
+		algo_sort(&stack_a, &stack_b,table, size_stack);
 	else if (size_stack <= 5 && !is_sorted(stack_a))
 		mini_sort(&stack_a, &stack_b);
 	else if (size_stack > 5 && !is_sorted(stack_a))
-		algo_sort(&stack_a, &stack_b, table, size_stack);
-	//  printf("----------------------->b\n");
-	//  displayList(&stack_b);
-	//  printf("----------------------->a\n");
-	//  displayList(&stack_a);
-	//   if(is_sorted(stack_a)==1)
-	// 		  printf("\nssssssssl\n");
-	//     else
-	//     printf("nnnnnnnnnnnnnnnnnnn\n");
+		algo_sort(&stack_a,&stack_b,table, size_stack);
+	
+	free(table);
+	freeList(stack_a);
+//  system("leaks push_swap");	
+ 
 	return (0);
 }

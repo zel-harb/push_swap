@@ -24,7 +24,7 @@ void				pa_bonus(t_list **stack_a, t_list **stack_b);
 void				pb_bonus(t_list **stack_b, t_list **stack_a);
 void				rra_bonus(t_list **stack_a);
 void				rrb_bonus(t_list **stack_b);
-void	rrr_bonus(t_list **stack_a,t_list **stack_b);
+void				rrr_bonus(t_list **stack_a, t_list **stack_b);
 void				ra_bonus(t_list **stack_a);
 void				rb_bonus(t_list **stack_b);
 void				rr_bonus(t_list **stack_a, t_list **stack_b);
@@ -33,7 +33,7 @@ void				sb_bonus(t_list **stack_b);
 void				ss_bonus(t_list **stack_a, t_list **stack_b);
 
 void				ft_putstr_fd_bonus(char *s, int fd);
-int					ft_full_bonus(t_list **stack, char **argv,int argc);
+int					ft_full_bonus(t_list **stack, char **argv, int argc);
 
 t_list				*ft_lstnew_bonus(int content);
 void				ft_lstadd_back_bonus(t_list **lst, t_list *new);

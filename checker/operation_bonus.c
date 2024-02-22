@@ -19,18 +19,16 @@ void	pb_bonus(t_list **stack_b, t_list **stack_a)
 {
 	push(stack_b, stack_a);
 }
-static void	reverseRotate(t_list **stack)
+void	reverseRotate(t_list **stack)
 {
 	t_list	*head;
 	t_list	*tail;
-	
 
 	head = *stack;
-    if(!head || head->next==NULL)
-        return;
+	if (!head || head->next == NULL)
+		return ;
 	tail = ft_lstlast_bonus(head);
-
-	while (head)
+	while (head->next)
 	{
 		if (head->next->next == NULL)
 		{
@@ -41,23 +39,36 @@ static void	reverseRotate(t_list **stack)
 	}
 	tail->next = *stack;
 	*stack = tail;
-	
 }
 void	rra_bonus(t_list **stack_a)
 {
 	reverseRotate(stack_a);
-	
 }
 void	rrb_bonus(t_list **stack_b)
 {
-	reverseRotate(stack_b);
-}
-void rrr_bonus(t_list **stack_a,t_list **stack_b)
-{
+	t_list	*head;
+	t_list	*tail;
 
+	head = *stack_b;
+	if (!head || head->next == NULL)
+		return ;
+	tail = ft_lstlast_bonus(head);
+	while (head->next)
+	{
+		if (head->next->next == NULL)
+		{
+			head->next = NULL;
+			break ;
+		}
+		head = head->next;
+	}
+	tail->next = *stack_b;
+	*stack_b = tail;
+}
+void	rrr_bonus(t_list **stack_a, t_list **stack_b)
+{
 	reverseRotate(stack_b);
 	reverseRotate(stack_a);
-
 }
 static void	rotate(t_list **stack)
 {

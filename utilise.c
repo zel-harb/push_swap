@@ -48,7 +48,7 @@ int	is_be(t_list *stack_a, int integer)
 }
 size_t	ft_strlen(char *str)
 {
-	size_t	i;
+	size_t i;
 
 	if (str == NULL)
 		return (0);

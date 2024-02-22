@@ -14,12 +14,17 @@ int	check_double(t_list *stack)
 			if (tmp1->value == tmp2->value)
 			{
 				ft_putstr_fd("Error\n", 1);
+				// freeList(tmp1);
+				// freeList(tmp2);
 				return (1);
 			}
 			tmp2 = tmp2->next;
 		}
 		tmp1 = tmp1->next;
 	}
+	// freeList(tmp1);
+	// freeList(tmp2);
+
 	return (0);
 }
 
@@ -51,18 +56,19 @@ int	check_non_number(char **argv, int argc)
 		j = 0;
 		while (argv[i][j])
 		{
-			if ((argv[i][j] < '0' || argv[i][j] > '9') && argv[i][j] != '-' && argv[i][j]!='+')
+			if ((argv[i][j] < '0' || argv[i][j] > '9') && argv[i][j] != '-'
+				&& argv[i][j] != '+')
 			{
 				ft_putstr_fd("Error\n", 1);
 				return (1);
 			}
-			if(argv[i][j]=='+')
+			if (argv[i][j] == '+')
 			{
-				if(argv[i][j+1] <'0'||argv[i][j+1]>'9')
+				if (argv[i][j + 1] < '0' || argv[i][j + 1] > '9')
 				{
 					ft_putstr_fd("Error\n", 1);
 					return (1);
-				}	
+				}
 			}
 			j++;
 		}
@@ -92,8 +98,14 @@ int	check_num_is_valid(char **argv, int i)
 int	check_error(char **argv, int argc)
 {
 	if (check_non_number(argv, argc))
+	{
+		
 		return (1);
+	}
 	if (check_intervalle(argv, argc))
+	{
+
 		return (1);
+	}
 	return (0);
 }

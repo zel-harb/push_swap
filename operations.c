@@ -10,6 +10,7 @@ void	push(t_list **stack_1, t_list **stack_2)
 	*stack_1 = tmp->next;
 	tmp->next = *stack_2;
 	*stack_2 = tmp;
+	// freeList(tmp);
 }
 void	pa(t_list **stack_a, t_list **stack_b)
 {

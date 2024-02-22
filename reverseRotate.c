@@ -6,8 +6,8 @@ void	reverseRotate(t_list **stack)
 	t_list	*tail;
 
 	head = *stack;
-	if(!(*stack) || ft_lstsize(*stack)==1)
-		return;
+	if (!(*stack) || ft_lstsize(*stack) == 1)
+		return ;
 	tail = ft_lstlast(head);
 	while (head)
 	{
@@ -20,7 +20,7 @@ void	reverseRotate(t_list **stack)
 	}
 	tail->next = *stack;
 	*stack = tail;
-	
+
 }
 void	rra(t_list **stack_a)
 {
@@ -32,7 +32,7 @@ void	rrb(t_list **stack_b)
 	reverseRotate(stack_b);
 	ft_putstr_fd("rrb\n", 1);
 }
-void	rrr(t_list **stack_a,t_list **stack_b)
+void	rrr(t_list **stack_a, t_list **stack_b)
 {
 	reverseRotate(stack_a);
 	reverseRotate(stack_b);
