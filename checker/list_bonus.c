@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   list_bonus.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zel-harb <zel-harb@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/23 08:40:31 by zel-harb          #+#    #+#             */
+/*   Updated: 2024/02/23 08:41:01 by zel-harb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap_bonus.h"
 
 t_list	*ft_lstnew_bonus(int content)
@@ -11,6 +23,7 @@ t_list	*ft_lstnew_bonus(int content)
 	new->next = NULL;
 	return (new);
 }
+
 void	ft_lstadd_back_bonus(t_list **lst, t_list *new)
 {
 	t_list	*p;
@@ -45,6 +58,7 @@ t_list	*ft_lstlast_bonus(t_list *lst)
 	}
 	return (tmp);
 }
+
 void	ft_lstadd_front_bonus(t_list **lst, t_list *new)
 {
 	if (lst == NULL || new == NULL)
@@ -55,8 +69,8 @@ void	ft_lstadd_front_bonus(t_list **lst, t_list *new)
 
 int	ft_lstsize_bonus(t_list *lst)
 {
-	t_list *tmp;
-	int i;
+	t_list	*tmp;
+	int		i;
 
 	i = 0;
 	if (lst == NULL)

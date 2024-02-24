@@ -1,4 +1,16 @@
-#include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zel-harb <zel-harb@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/23 08:39:25 by zel-harb          #+#    #+#             */
+/*   Updated: 2024/02/24 00:33:22 by zel-harb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap_bonus.h"
 
 char	*ft_strchr(char *s, int c)
 {
@@ -55,9 +67,9 @@ char	*ft_strdup(char *src)
 
 char	*ft_strjoin(char *s1, char *s2)
 {
-	size_t i;
-	size_t j;
-	char *str;
+	size_t	i;
+	size_t	j;
+	char	*str;
 
 	i = 0;
 	j = 0;

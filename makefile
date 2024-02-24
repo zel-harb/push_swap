@@ -11,28 +11,32 @@ SOURCES = push_swap.c \
 	swap.c \
 	liste.c \
 	algo.c \
-	push.c \
+	push_a_to_b.c \
+	push_b_to_a.c \
 	utilise.c \
 	error.c \
 	split.c \
-	free.c
+	free.c \
+	utilise_push.c
 
 OBJECTS = $(SOURCES:.c=.o)
-SOURCES_BONUS = checker_mac.c \
-			get_next_line.c \
-			get_next_line_utils.c \
-			list_bonus.c \
-			use_bonus.c \
-			operation_bonus.c \
+SOURCES_BONUS = checker/checker_mac.c \
+			checker/get_next_line.c \
+			checker/get_next_line_utils.c \
+			checker/list_bonus.c \
+			checker/use_bonus.c \
+			checker/operation_bonus.c \
 
 
 BOBJECTS = $(SOURCES_BONUS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
+	$(CC) $(FLAGS) $(OBJECTS) -o $(NAME)
 bonus: $(CHECKER)
-.c.o:
-	$(CC) $(FLAGS) -c $<
+$(CHECKER):$(BOBJECTS)
+		$(CC) $(FLAGS) $(BOBJECTS) -o $(CHECKER)
+
 
 
 

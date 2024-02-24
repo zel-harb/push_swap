@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zel-harb <zel-harb@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/23 08:38:27 by zel-harb          #+#    #+#             */
+/*   Updated: 2024/02/23 08:39:00 by zel-harb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap_bonus.h"
 
 char	*to_read(int fd, char *str)
@@ -81,8 +93,8 @@ char	*new_line(char *line)
 
 char	*get_next_line(int fd)
 {
-	static char *str;
-	char *s_str;
+	static char	*str;
+	char		*s_str;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);

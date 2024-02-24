@@ -1,14 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   free.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zel-harb <zel-harb@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/22 18:51:32 by zel-harb          #+#    #+#             */
+/*   Updated: 2024/02/22 18:52:25 by zel-harb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
+void	free_list(t_list *head)
+{
+	t_list	*temp;
 
-void freeList(t_list* head) {
-
-    t_list *temp;
-
-    while (head != NULL) 
+	while (head != NULL)
 	{
-        temp = head;
-        head = head->next;
-        free(temp);
-    }
+		temp = head;
+		head = head->next;
+		free(temp);
+	}
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap_bonus.h                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zel-harb <zel-harb@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/23 08:43:29 by zel-harb          #+#    #+#             */
+/*   Updated: 2024/02/23 08:43:40 by zel-harb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_BONUS_H
 # define PUSH_SWAP_BONUS_H
 # include <limits.h>
@@ -14,6 +26,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+
 typedef struct s_list
 {
 	int				value;

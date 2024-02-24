@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   use_bonus.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zel-harb <zel-harb@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/23 08:43:55 by zel-harb          #+#    #+#             */
+/*   Updated: 2024/02/23 08:45:39 by zel-harb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap_bonus.h"
 
 long	ft_atoi_bonus(char *str)
@@ -25,12 +37,14 @@ long	ft_atoi_bonus(char *str)
 	}
 	return (result * sign);
 }
+
 void	ft_putchar_fd(char c, int fd)
 {
 	if (fd < 0)
 		return ;
 	write(fd, &c, 1);
 }
+
 void	ft_putstr_fd_bonus(char *s, int fd)
 {
 	int	i;
@@ -44,6 +58,7 @@ void	ft_putstr_fd_bonus(char *s, int fd)
 		i++;
 	}
 }
+
 int	check_double_bonus(t_list *stack)
 {
 	t_list	*tmp1;
@@ -143,6 +158,7 @@ int	check_error_bonus(char **argv, int argc)
 		return (1);
 	return (0);
 }
+
 static char	**ft_free(char **s, int j)
 {
 	int	i;
@@ -238,6 +254,7 @@ char	**ft_split(char const *s, char c)
 	word = set_word(s, c, len);
 	return (word);
 }
+
 void	full_split(t_list **stack_a, char **argv)
 {
 	t_list	*new;
@@ -251,6 +268,7 @@ void	full_split(t_list **stack_a, char **argv)
 		i++;
 	}
 }
+
 int	valide_args_bonus(char **argv, int argc)
 {
 	int	i;
@@ -289,11 +307,12 @@ int	valide_args_bonus(char **argv, int argc)
 	}
 	return (1);
 }
+
 int	ft_full_bonus(t_list **stack, char **argv, int argc)
 {
-	char **str;
-	int count;
-	int i;
+	char	**str;
+	int		count;
+	int		i;
 
 	i = 1;
 	if (valide_args_bonus(argv, argc) == 0)
@@ -305,10 +324,8 @@ int	ft_full_bonus(t_list **stack, char **argv, int argc)
 	{
 		str = ft_split(argv[i], ' ');
 		count = count_words(argv[i], ' ');
-
 		if (check_error_bonus(str, count))
 			return (1);
-
 		full_split(stack, str);
 		i++;
 	}

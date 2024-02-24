@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zel-harb <zel-harb@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/23 08:32:55 by zel-harb          #+#    #+#             */
+/*   Updated: 2024/02/23 08:33:43 by zel-harb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	sort_3(t_list **stack)
@@ -14,6 +26,7 @@ void	sort_3(t_list **stack)
 	if ((*stack)->value > (*stack)->next->value)
 		sa(stack);
 }
+
 void	push_three(t_list **stack_a, t_list **stack_b)
 {
 	int	push;
@@ -45,6 +58,7 @@ void	mini_sort_5(t_list **stack_a, t_list **stack_b, int number)
 			rra(stack_a);
 	}
 }
+
 void	ft_sort_int_tab(int *tab, int size)
 {
 	int	tmp;
@@ -69,6 +83,7 @@ void	ft_sort_int_tab(int *tab, int size)
 		j = i + 1;
 	}
 }
+
 void	sort_5(t_list **stack_a, t_list **stack_b)
 {
 	int	min;
@@ -90,10 +105,6 @@ void	mini_sort(t_list **stack, t_list **stack_b)
 		sa(stack);
 	else if (ft_lstsize(*stack) == 3)
 		sort_3(stack);
-	// else if(ft_lstsize(*stack)==4)
-	//     sort_4(stack);
 	else if (ft_lstsize(*stack) == 5)
-	{
 		sort_5(stack, stack_b);
-	}
 }

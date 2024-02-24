@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   liste.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zel-harb <zel-harb@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/22 18:52:41 by zel-harb          #+#    #+#             */
+/*   Updated: 2024/02/22 18:53:33 by zel-harb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 t_list	*ft_lstnew(int content)
@@ -12,6 +24,7 @@ t_list	*ft_lstnew(int content)
 	new->next = NULL;
 	return (new);
 }
+
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
 	t_list	*p;
@@ -46,6 +59,7 @@ t_list	*ft_lstlast(t_list *lst)
 	}
 	return (tmp);
 }
+
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
 	if (lst == NULL || new == NULL)
@@ -56,8 +70,8 @@ void	ft_lstadd_front(t_list **lst, t_list *new)
 
 int	ft_lstsize(t_list *lst)
 {
-	t_list *tmp;
-	int i;
+	t_list	*tmp;
+	int		i;
 
 	i = 0;
 	if (lst == NULL)

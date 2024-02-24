@@ -6,7 +6,7 @@
 /*   By: zel-harb <zel-harb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 18:08:51 by zel-harb          #+#    #+#             */
-/*   Updated: 2024/02/20 18:11:27 by zel-harb         ###   ########.fr       */
+/*   Updated: 2024/02/24 00:29:39 by zel-harb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ int	ft_push(t_list **stack_a, t_list **stack_b)
 	return (0);
 }
 
-void	displayList_list(t_list **current)
+void	displaylist_list(t_list **current)
 {
 	t_list	*temp;
 
@@ -166,9 +166,9 @@ int	main(int argc, char **argv)
 		ft_putstr_fd_bonus("OK\n", 1);
 	else
 		ft_putstr_fd_bonus("KO\n", 1);
-	printf("stack __________________a\n");
-	displayList_list(&stack_a);
-	printf("stack __________________b\n");
-	displayList_list(&stack_b);
+	// printf("stack __________________a\n");
+	// displayList_list(&stack_a);
+	// printf("stack __________________b\n");
+	// displayList_list(&stack_b);
 	return (0);
 }
