@@ -1,4 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utilise_push.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zel-harb <zel-harb@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/24 13:31:08 by zel-harb          #+#    #+#             */
+/*   Updated: 2024/02/24 13:31:34 by zel-harb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
+
 void	first_last(t_list **stack_a, t_list **stack_b, int max)
 {
 	if ((*stack_b)->value == max)
@@ -24,12 +37,14 @@ void	moves(t_list **stack_b, int max)
 			rrb(stack_b);
 	}
 }
+
 void	rest(t_list **stack_a, int *max, int *k)
 {
 	rra(stack_a);
 	(*max)--;
 	(*k)--;
 }
+
 void	on_stack_a(t_list **stack_a, t_list **stack_b, int *k)
 {
 	pa(stack_b, stack_a);

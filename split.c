@@ -6,25 +6,11 @@
 /*   By: zel-harb <zel-harb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 08:33:55 by zel-harb          #+#    #+#             */
-/*   Updated: 2024/02/23 08:34:42 by zel-harb         ###   ########.fr       */
+/*   Updated: 2024/02/24 13:30:38 by zel-harb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-char	**ft_free(char **s, int j)
-{
-	int	i;
-
-	i = 0;
-	while (i < j)
-	{
-		free(s[i]);
-		i++;
-	}
-	free(s);
-	return (NULL);
-}
 
 int	count_words(char const *s, char c)
 {
@@ -106,43 +92,4 @@ char	**ft_split(char const *s, char c)
 	len = count_words(s, c);
 	word = set_word(s, c, len);
 	return (word);
-}
-
-void	full_split(t_list **stack_a, char **argv)
-{
-	int		i;
-	t_list	*new;
-
-	i = 0;
-	while (argv[i])
-	{
-		new = ft_lstnew(ft_atoi(argv[i]));
-		ft_lstadd_back(stack_a, new);
-		i++;
-	}
-}
-
-int	ft_full(t_list **stack, char **argv)
-{
-	char	**str;
-	int		count;
-	int		i;
-
-	i = 1;
-	while (argv[i])
-	{
-		str = ft_split(argv[i], ' ');
-		count = count_words(argv[i], ' ');
-		if (check_error(str, count))
-		{
-			ft_free(str, count);
-			return (1);
-		}
-		full_split(stack, str);
-		ft_free(str, count);
-		i++;
-	}
-	if (check_double(*stack))
-		return (1);
-	return (0);
 }

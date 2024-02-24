@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zel-harb <zel-harb@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/24 13:46:37 by zel-harb          #+#    #+#             */
+/*   Updated: 2024/02/24 13:46:38 by zel-harb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include <limits.h>
@@ -12,15 +24,15 @@ typedef struct s_list
 	int				value;
 	int				moves;
 	struct s_list	*next;
-	
+
 }					t_list;
 typedef struct s_para
 {
-	int offset;
-	int start;
-	int the_end;
-	int mid;
-	struct s_para *next;
+	int				offset;
+	int				start;
+	int				the_end;
+	int				mid;
+	struct s_para	*next;
 }					t_para;
 
 // list
@@ -67,7 +79,7 @@ void				ft_sort_int_tab(int *tab, int size);
 int					is_sorted(t_list *stack);
 int					get_max(t_list *stack);
 void				mini_sort(t_list **stack, t_list **stack_b);
-void				algo_sort(t_list **stack_a, t_list **stack_b, int *table,
+void				algo_sort(t_list **stack_a, t_list **stack_b,
 						int size_stack);
 void				full_moves(t_list **stack_a);
 int					get_min(t_list *stack);
@@ -91,7 +103,7 @@ void				full_split(t_list **stack_a, char **argv);
 int					count_words(char const *s, char c);
 int					check_double(t_list *stack);
 size_t				ft_strlen(char *str);
-int	find_max(t_list *stack, int max);
+int					find_max(t_list *stack, int max);
 
 // free
 
@@ -101,12 +113,16 @@ int	find_max(t_list *stack, int max);
 // void	ft_lstclear(t_list **lst, void (*del)(void *));
 // char	**ft_free(char **s, int j);
 void				free_list(t_list *head);
-int	ft_check_max(t_list *stack, int max);
-void	choice_move(t_list **stack_a, int *table, int the_end, int start);
-int	find_near(t_list *stack_a, int *table, int the_end, int start);
-void	first_last(t_list **stack_a, t_list **stack_b, int max);
-void	moves(t_list **stack_b, int max);
-void	rest(t_list **stack_a, int *max, int *k);
-void	on_stack_a(t_list **stack_a, t_list **stack_b, int *k);
-
+int					ft_check_max(t_list *stack, int max);
+void				choice_move(t_list **stack_a, int *table, int the_end,
+						int start);
+int					find_near(t_list *stack_a, int *table, int the_end,
+						int start);
+void				first_last(t_list **stack_a, t_list **stack_b, int max);
+void				moves(t_list **stack_b, int max);
+void				rest(t_list **stack_a, int *max, int *k);
+void				on_stack_a(t_list **stack_a, t_list **stack_b, int *k);
+char				**ft_free(char **s, int j);
+int					count_words(char const *s, char c);
+char				**ft_split(char const *s, char c);
 #endif

@@ -6,37 +6,11 @@
 /*   By: zel-harb <zel-harb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 19:23:34 by zel-harb          #+#    #+#             */
-/*   Updated: 2024/02/22 21:59:40 by zel-harb         ###   ########.fr       */
+/*   Updated: 2024/02/24 13:46:16 by zel-harb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-long	ft_atoi(char *str)
-{
-	int		i;
-	long	result;
-	int		sign;
-
-	i = 0;
-	result = 0;
-	sign = 1;
-	while (str[i] == 32)
-		i++;
-	if (str[i] == 45 || str[i] == 43)
-	{
-		if (str[i] == 45)
-			sign *= (-1);
-		i++;
-	}
-	while (str[i] >= '0' && str[i] <= '9' && str[i] != '\0')
-	{
-		result *= 10;
-		result += str[i] - 48;
-		i++;
-	}
-	return (result * sign);
-}
 
 void	full_array(int *table, int size, t_list *stack_a)
 {
@@ -91,10 +65,7 @@ int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
-	int		size_stack;
-	int		*table;
 
-	(void)argc;
 	if (argc == 1)
 		return (0);
 	if (ft_full(&stack_a, argv) == 1)
@@ -102,23 +73,18 @@ int	main(int argc, char **argv)
 		free_list(stack_a);
 		return (0);
 	}
-	size_stack = ft_lstsize(stack_a);
-	if (size_stack == 1 || size_stack == 0)
+	if (ft_lstsize(stack_a) == 1 || ft_lstsize(stack_a) == 0)
 	{
-		if (size_stack == 1)
+		if (ft_lstsize(stack_a) == 1)
 			free_list(stack_a);
 		return (0);
 	}
-	table = (int *)malloc(size_stack * sizeof(int));
-	full_array(table, size_stack, stack_a);
-	ft_sort_int_tab(table, size_stack);
-	if (size_stack == 4 && !is_sorted(stack_a))
-		algo_sort(&stack_a, &stack_b, table, size_stack);
-	else if (size_stack <= 5 && !is_sorted(stack_a))
+	if (ft_lstsize(stack_a) == 4 && !is_sorted(stack_a))
+		algo_sort(&stack_a, &stack_b, ft_lstsize(stack_a));
+	else if (ft_lstsize(stack_a) <= 5 && !is_sorted(stack_a))
 		mini_sort(&stack_a, &stack_b);
-	else if (size_stack > 5 && !is_sorted(stack_a))
-		algo_sort(&stack_a, &stack_b, table, size_stack);
-	free(table);
+	else if (ft_lstsize(stack_a) > 5 && !is_sorted(stack_a))
+		algo_sort(&stack_a, &stack_b, ft_lstsize(stack_a));
 	free_list(stack_a);
 	return (0);
 }

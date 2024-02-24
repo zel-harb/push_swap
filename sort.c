@@ -6,7 +6,7 @@
 /*   By: zel-harb <zel-harb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 08:32:55 by zel-harb          #+#    #+#             */
-/*   Updated: 2024/02/23 08:33:43 by zel-harb         ###   ########.fr       */
+/*   Updated: 2024/02/24 13:23:39 by zel-harb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,31 +56,6 @@ void	mini_sort_5(t_list **stack_a, t_list **stack_b, int number)
 		}
 		else
 			rra(stack_a);
-	}
-}
-
-void	ft_sort_int_tab(int *tab, int size)
-{
-	int	tmp;
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (i < size)
-	{
-		while (j < size)
-		{
-			if (tab[i] > tab[j])
-			{
-				tmp = tab[i];
-				tab[i] = tab[j];
-				tab[j] = tmp;
-			}
-			j++;
-		}
-		i++;
-		j = i + 1;
 	}
 }
 

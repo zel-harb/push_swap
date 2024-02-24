@@ -6,22 +6,11 @@
 /*   By: zel-harb <zel-harb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 08:35:54 by zel-harb          #+#    #+#             */
-/*   Updated: 2024/02/24 11:54:45 by zel-harb         ###   ########.fr       */
+/*   Updated: 2024/02/24 13:34:35 by zel-harb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	is_sorted(t_list *stack)
-{
-	while (stack->next != NULL)
-	{
-		if (stack->value > stack->next->value)
-			return (0);
-		stack = stack->next;
-	}
-	return (1);
-}
 
 int	get_max(t_list *stack)
 {
@@ -49,17 +38,6 @@ int	get_min(t_list *stack)
 		stack = stack->next;
 	}
 	return (min);
-}
-
-int	is_be(t_list *stack_a, int integer)
-{
-	while (stack_a)
-	{
-		if (integer == stack_a->value)
-			return (1);
-		stack_a = stack_a->next;
-	}
-	return (0);
 }
 
 size_t	ft_strlen(char *str)

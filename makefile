@@ -17,7 +17,8 @@ SOURCES = push_swap.c \
 	error.c \
 	split.c \
 	free.c \
-	utilise_push.c
+	utilise_push.c \
+	full_split.c
 
 OBJECTS = $(SOURCES:.c=.o)
 SOURCES_BONUS = checker/checker_mac.c \

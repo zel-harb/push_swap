@@ -6,13 +6,11 @@
 /*   By: zel-harb <zel-harb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 11:52:37 by zel-harb          #+#    #+#             */
-/*   Updated: 2024/02/24 11:55:09 by zel-harb         ###   ########.fr       */
+/*   Updated: 2024/02/24 12:46:23 by zel-harb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-
 
 void	choice_move(t_list **stack_a, int *table, int the_end, int start)
 {
