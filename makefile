@@ -21,6 +21,7 @@ SOURCES = push_swap.c \
 	full_split.c
 
 OBJECTS = $(SOURCES:.c=.o)
+
 SOURCES_BONUS = checker/checker_mac.c \
 			checker/get_next_line.c \
 			checker/get_next_line_utils.c \
@@ -45,7 +46,7 @@ clean:
 	rm -rf $(OBJECTS) $(BOBJECTS)
 	
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(BOBJECTS)
 
 re: fclean all
 

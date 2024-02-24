@@ -6,7 +6,7 @@
 /*   By: zel-harb <zel-harb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 18:27:16 by zel-harb          #+#    #+#             */
-/*   Updated: 2024/02/22 18:50:40 by zel-harb         ###   ########.fr       */
+/*   Updated: 2024/02/24 15:09:28 by zel-harb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,16 +54,21 @@ int	check_intervalle(char **argv, int argc)
 
 int	mcheck_non_number(char **argv, int i, int j)
 {
+	
 	if (argv[i][j] < '0' || argv[i][j] > '9')
 	{
 		if (argv[i][j] != '-' && argv[i][j] != '+')
 			return (1);
 	}
-	if (argv[i][j] == '+')
+	
+	if (argv[i][j] == '+' || argv[i][j] == '-')
 	{
 		if (argv[i][j + 1] < '0' || argv[i][j + 1] > '9')
 			return (1);
+		if (argv[i][j + 2] < '0' || argv[i][j + 2] > '9')
+			return (1);
 	}
+	
 	return (0);
 }
 
@@ -93,8 +98,6 @@ int	check_non_number(char **argv, int argc)
 int	check_error(char **argv, int argc)
 {
 	if (check_non_number(argv, argc))
-		return (1);
-	if (check_intervalle(argv, argc))
 		return (1);
 	if (check_intervalle(argv, argc))
 		return (1);

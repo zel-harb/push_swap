@@ -6,7 +6,7 @@
 /*   By: zel-harb <zel-harb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 13:46:37 by zel-harb          #+#    #+#             */
-/*   Updated: 2024/02/24 13:46:38 by zel-harb         ###   ########.fr       */
+/*   Updated: 2024/02/24 16:47:21 by zel-harb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,11 @@ typedef struct s_para
 	int				start;
 	int				the_end;
 	int				mid;
-	struct s_para	*next;
 }					t_para;
 
 // list
 t_list				*ft_lstnew(int content);
-void				ft_lstadd_back(t_list **lst, t_list *new);
+void				ft_lstadd_back	(t_list **lst, t_list *new);
 void				ft_lstadd_front(t_list **lst, t_list *new);
 t_list				*ft_lstlast(t_list *lst);
 int					ft_lstsize(t_list *lst);
@@ -84,7 +83,7 @@ void				algo_sort(t_list **stack_a, t_list **stack_b,
 void				full_moves(t_list **stack_a);
 int					get_min(t_list *stack);
 int					is_be(t_list *stack_a, int integer);
-long				ft_atoi(char *str);
+long double				ft_atoi(char *str);
 // display
 
 void				full_array(int *table, int size, t_list *stack_a);
@@ -125,4 +124,5 @@ void				on_stack_a(t_list **stack_a, t_list **stack_b, int *k);
 char				**ft_free(char **s, int j);
 int					count_words(char const *s, char c);
 char				**ft_split(char const *s, char c);
+void free_t_para(t_para *ptr);
 #endif

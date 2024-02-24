@@ -6,7 +6,7 @@
 /*   By: zel-harb <zel-harb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 13:26:24 by zel-harb          #+#    #+#             */
-/*   Updated: 2024/02/24 13:35:29 by zel-harb         ###   ########.fr       */
+/*   Updated: 2024/02/24 15:19:38 by zel-harb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ int	is_be(t_list *stack_a, int integer)
 	return (0);
 }
 
-long	ft_atoi(char *str)
+long double		ft_atoi(char *str)
 {
 	int		i;
-	long	result;
+	long double	result;
 	int		sign;
 
 	i = 0;

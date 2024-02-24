@@ -6,7 +6,7 @@
 /*   By: zel-harb <zel-harb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 11:52:37 by zel-harb          #+#    #+#             */
-/*   Updated: 2024/02/24 12:46:23 by zel-harb         ###   ########.fr       */
+/*   Updated: 2024/02/24 16:34:02 by zel-harb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ t_para	*ft_para_lstnew(int content, int content1)
 	new->mid = content1;
 	new->start = new->mid - new->offset;
 	new->the_end = new->mid + new->offset;
-	new->next = NULL;
 	return (new);
 }
 
@@ -96,4 +95,5 @@ void	push_a_to_b(t_list **stack_a, t_list **stack_b, int *table,
 		if (para->the_end >= size_stack)
 			para->the_end = size_stack - 1;
 	}
+	free_t_para(para);
 }
