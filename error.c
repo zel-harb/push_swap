@@ -63,8 +63,12 @@ int	mcheck_non_number(char **argv, int i, int j)
 	{
 		if (argv[i][j + 1] < '0' || argv[i][j + 1] > '9')
 			return (1);
-		if (argv[i][j + 2] < '0' || argv[i][j + 2] > '9')
-			return (1);
+		if ((j - 1) >= 0)
+		{
+			if (argv[i][j - 1] >= '0' || argv[i][j - 1] <= '9')
+				if (argv[i][j + 1] >= '0' || argv[i][j + 1] <= '9')
+					return (1);
+		}
 	}
 	return (0);
 }
