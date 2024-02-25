@@ -6,7 +6,7 @@
 /*   By: zel-harb <zel-harb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 18:51:32 by zel-harb          #+#    #+#             */
-/*   Updated: 2024/02/24 16:31:10 by zel-harb         ###   ########.fr       */
+/*   Updated: 2024/02/25 02:14:01 by zel-harb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ char	**ft_free(char **s, int j)
 	free(s);
 	return (NULL);
 }
-void free_t_para(t_para *ptr)
-{
-    free(ptr); 
-}
 
+void	free_t_para(t_para *ptr)
+{
+	free(ptr);
+}

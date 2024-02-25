@@ -12,8 +12,7 @@
 
 #include "push_swap.h"
 
-void	push_b_to_a(t_list **stack_a, t_list **stack_b, int *table,
-		int max)
+void	push_b_to_a(t_list **stack_a, t_list **stack_b, int *table, int max)
 {
 	int	k;
 

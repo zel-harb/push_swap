@@ -6,7 +6,7 @@
 /*   By: zel-harb <zel-harb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 19:23:34 by zel-harb          #+#    #+#             */
-/*   Updated: 2024/02/24 16:43:36 by zel-harb         ###   ########.fr       */
+/*   Updated: 2024/02/25 02:14:19 by zel-harb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,34 +67,24 @@ int	main(int argc, char **argv)
 	t_list	*stack_b;
 
 	if (argc == 1)
-	{
-		// system("leaks push_swap");
 		return (0);
-	}
 	if (ft_full(&stack_a, argv) == 1)
 	{
 		free_list(stack_a);
-		// system("leaks push_swap");
 		return (0);
 	}
 	if (ft_lstsize(stack_a) == 1 || ft_lstsize(stack_a) == 0)
 	{
 		if (ft_lstsize(stack_a) == 1)
 			free_list(stack_a);
-		// system("leaks push_swap");
 		return (0);
 	}
 	if (ft_lstsize(stack_a) == 4 && !is_sorted(stack_a))
-	{
 		algo_sort(&stack_a, &stack_b, ft_lstsize(stack_a));
-		
-	}
 	else if (ft_lstsize(stack_a) <= 5 && !is_sorted(stack_a))
 		mini_sort(&stack_a, &stack_b);
 	else if (ft_lstsize(stack_a) > 5 && !is_sorted(stack_a))
 		algo_sort(&stack_a, &stack_b, ft_lstsize(stack_a));
 	free_list(stack_a);
-	// system("leaks push_swap");
-	
 	return (0);
 }
