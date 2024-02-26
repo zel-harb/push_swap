@@ -6,7 +6,7 @@
 /*   By: zel-harb <zel-harb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 13:26:24 by zel-harb          #+#    #+#             */
-/*   Updated: 2024/02/25 00:43:20 by zel-harb         ###   ########.fr       */
+/*   Updated: 2024/02/26 09:16:06 by zel-harb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ long double	ft_atoi(char *str)
 	i = 0;
 	result = 0;
 	sign = 1;
-	while (str[i] == 32 || str[i] == '\t')
+	while (str[i] == 32)
 		i++;
 	if (str[i] == 45 || str[i] == 43)
 	{

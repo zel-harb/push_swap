@@ -6,22 +6,22 @@
 /*   By: zel-harb <zel-harb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 08:43:55 by zel-harb          #+#    #+#             */
-/*   Updated: 2024/02/23 08:45:39 by zel-harb         ###   ########.fr       */
+/*   Updated: 2024/02/26 09:53:49 by zel-harb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
-long	ft_atoi_bonus(char *str)
+long double	ft_atoi_bonus(char *str)
 {
-	int		i;
-	long	result;
-	int		sign;
+	int			i;
+	long double	result;
+	int			sign;
 
 	i = 0;
 	result = 0;
 	sign = 1;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+	while (str[i] == 32)
 		i++;
 	if (str[i] == 45 || str[i] == 43)
 	{
@@ -100,6 +100,27 @@ int	check_intervalle(char **argv, int argc)
 	return (0);
 }
 
+int	mcheck_non_number(char **argv, int i, int j)
+{
+	if (argv[i][j] < '0' || argv[i][j] > '9')
+	{
+		if (argv[i][j] != '-' && argv[i][j] != '+')
+			return (1);
+	}
+	if (argv[i][j] == '+' || argv[i][j] == '-')
+	{
+		if (argv[i][j + 1] < '0' || argv[i][j + 1] > '9')
+			return (1);
+		if ((j - 1) >= 0)
+		{
+			if (argv[i][j - 1] >= '0' || argv[i][j - 1] <= '9')
+				if (argv[i][j + 1] >= '0' || argv[i][j + 1] <= '9')
+					return (1);
+		}
+	}
+	return (0);
+}
+
 int	check_non_number(char **argv, int argc)
 {
 	int	j;
@@ -111,19 +132,10 @@ int	check_non_number(char **argv, int argc)
 		j = 0;
 		while (argv[i][j])
 		{
-			if ((argv[i][j] < '0' || argv[i][j] > '9') && argv[i][j] != '-'
-				&& argv[i][j] != '+')
+			if (mcheck_non_number(argv, i, j) == 1)
 			{
 				ft_putstr_fd_bonus("Error\n", 1);
 				return (1);
-			}
-			if (argv[i][j] == '+')
-			{
-				if (argv[i][j + 1] < '0' || argv[i][j + 1] > '9')
-				{
-					ft_putstr_fd_bonus("Error\n", 1);
-					return (1);
-				}
 			}
 			j++;
 		}
@@ -159,7 +171,45 @@ int	check_error_bonus(char **argv, int argc)
 	return (0);
 }
 
-static char	**ft_free(char **s, int j)
+int	valide_args_bonus(char **argv, int argc)
+{
+	int	i;
+	int	size;
+	int	k;
+	int	j;
+
+	j = 0;
+	i = 1;
+	k = 0;
+	size = ft_strlen_bonus(argv[i]);
+	if (size == 0)
+		return (0);
+	while (size != 0 && i < argc)
+	{
+		size = ft_strlen_bonus(argv[i]);
+		if (size == 0)
+			return (0);
+		i++;
+	}
+	i = 1;
+	while (argv[i] && i < argc)
+	{
+		size = ft_strlen_bonus(argv[i]);
+		while (argv[i][j])
+		{
+			if (argv[i][j] == ' ')
+				k++;
+			j++;
+		}
+		if (k == size)
+			return (0);
+		k = 0;
+		j = 0;
+		i++;
+	}
+	return (1);
+}
+char	**ft_free(char **s, int j)
 {
 	int	i;
 
@@ -268,46 +318,6 @@ void	full_split(t_list **stack_a, char **argv)
 		i++;
 	}
 }
-
-int	valide_args_bonus(char **argv, int argc)
-{
-	int	i;
-	int	size;
-	int	k;
-	int	j;
-
-	j = 0;
-	i = 1;
-	k = 0;
-	size = ft_strlen_bonus(argv[i]);
-	if (size == 0)
-		return (0);
-	while (size != 0 && i < argc)
-	{
-		size = ft_strlen_bonus(argv[i]);
-		if (size == 0)
-			return (0);
-		i++;
-	}
-	i = 1;
-	while (argv[i] && i < argc)
-	{
-		size = ft_strlen_bonus(argv[i]);
-		while (argv[i][j])
-		{
-			if (argv[i][j] == ' ')
-				k++;
-			j++;
-		}
-		if (k == size)
-			return (0);
-		k = 0;
-		j = 0;
-		i++;
-	}
-	return (1);
-}
-
 int	ft_full_bonus(t_list **stack, char **argv, int argc)
 {
 	char	**str;
@@ -325,11 +335,16 @@ int	ft_full_bonus(t_list **stack, char **argv, int argc)
 		str = ft_split(argv[i], ' ');
 		count = count_words(argv[i], ' ');
 		if (check_error_bonus(str, count))
+		{
+			ft_free(str, count);
 			return (1);
+		}
 		full_split(stack, str);
+		ft_free(str, count);
 		i++;
 	}
 	if (check_double_bonus(*stack))
 		return (1);
 	return (0);
 }
+

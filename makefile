@@ -2,7 +2,7 @@ CC = cc
 NAME = push_swap
 FLAGS = -Wall -Wextra -Werror
 #-fsanitize=address -g3
-CHECKER= checker
+CHECKER1= checker_bonus
 SOURCES = push_swap.c \
 	operations.c \
 	reverseRotate.c \
@@ -22,12 +22,14 @@ SOURCES = push_swap.c \
 
 OBJECTS = $(SOURCES:.c=.o)
 
-SOURCES_BONUS = checker/checker_mac.c \
+SOURCES_BONUS = checker/main.c \
 			checker/get_next_line.c \
 			checker/get_next_line_utils.c \
 			checker/list_bonus.c \
 			checker/use_bonus.c \
 			checker/operation_bonus.c \
+			checker/free_bonus.c \
+			# checker/split_bonus.c
 
 
 BOBJECTS = $(SOURCES_BONUS:.c=.o)
@@ -35,9 +37,11 @@ all: $(NAME)
 
 $(NAME): $(OBJECTS)
 	$(CC) $(FLAGS) $(OBJECTS) -o $(NAME)
-bonus: $(CHECKER)
-$(CHECKER):$(BOBJECTS)
-		$(CC) $(FLAGS) $(BOBJECTS) -o $(CHECKER)
+
+bonus: $(CHECKER1)
+
+$(CHECKER1):$(BOBJECTS)
+		$(CC) $(FLAGS) $(BOBJECTS) -o $(CHECKER1)
 
 
 
@@ -46,7 +50,7 @@ clean:
 	rm -rf $(OBJECTS) $(BOBJECTS)
 	
 fclean: clean
-	rm -f $(NAME) $(BOBJECTS)
+	rm -f $(NAME) $(CHECKER1)
 
 re: fclean all
 

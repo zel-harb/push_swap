@@ -6,7 +6,7 @@
 /*   By: zel-harb <zel-harb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 08:41:16 by zel-harb          #+#    #+#             */
-/*   Updated: 2024/02/23 08:42:59 by zel-harb         ###   ########.fr       */
+/*   Updated: 2024/02/26 09:39:10 by zel-harb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,16 @@ void	pb_bonus(t_list **stack_b, t_list **stack_a)
 	push(stack_b, stack_a);
 }
 
-void	reverseRotate(t_list **stack)
+void	reverse_rotate(t_list **stack)
 {
 	t_list	*head;
 	t_list	*tail;
 
 	head = *stack;
-	if (!head || head->next == NULL)
+	if (!(*stack) || ft_lstsize_bonus(*stack) == 1)
 		return ;
 	tail = ft_lstlast_bonus(head);
-	while (head->next)
+	while (head)
 	{
 		if (head->next->next == NULL)
 		{
@@ -58,35 +58,18 @@ void	reverseRotate(t_list **stack)
 
 void	rra_bonus(t_list **stack_a)
 {
-	reverseRotate(stack_a);
+	reverse_rotate(stack_a);
 }
 
 void	rrb_bonus(t_list **stack_b)
 {
-	t_list	*head;
-	t_list	*tail;
-
-	head = *stack_b;
-	if (!head || head->next == NULL)
-		return ;
-	tail = ft_lstlast_bonus(head);
-	while (head->next)
-	{
-		if (head->next->next == NULL)
-		{
-			head->next = NULL;
-			break ;
-		}
-		head = head->next;
-	}
-	tail->next = *stack_b;
-	*stack_b = tail;
+	reverse_rotate(stack_b);
 }
 
 void	rrr_bonus(t_list **stack_a, t_list **stack_b)
 {
-	reverseRotate(stack_b);
-	reverseRotate(stack_a);
+	reverse_rotate(stack_b);
+	reverse_rotate(stack_a);
 }
 
 static void	rotate(t_list **stack)

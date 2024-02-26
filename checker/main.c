@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker_mac.c                                      :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zel-harb <zel-harb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 18:08:51 by zel-harb          #+#    #+#             */
-/*   Updated: 2024/02/24 00:29:39 by zel-harb         ###   ########.fr       */
+/*   Updated: 2024/02/26 09:31:40 by zel-harb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,21 +40,15 @@ size_t	ft_strlen_bonus(char *str)
 int	ft_strcmp(char *s1, char *name_moves)
 {
 	int	i;
-	int	k;
 
 	i = 0;
-	k = 0;
 	while (name_moves[i])
 	{
-		if (name_moves[i] == s1[i])
-			k++;
+		if (name_moves[i] != s1[i])
+			return (1);
 		i++;
 	}
-	if (k == 3)
-		return (0);
-	else if (k == 4)
-		return (0);
-	return (1);
+	return (0);
 }
 
 int	valid_moves(char *str)
@@ -99,14 +93,14 @@ int	ft_push(t_list **stack_a, t_list **stack_b)
 	while (line)
 	{
 		if (check_valid_moves(line) != 0)
-			return (1);
-		else if (ft_strcmp(line, "sa\n") == 0)
-			sa_bonus(stack_a);
-		if (ft_strcmp(line, "sb\n") == 0)
 		{
-			printf("hi\n");
-			sb_bonus(stack_b);
+			free(line);
+			return (1);
 		}
+		if (ft_strcmp(line, "sa\n") == 0)
+			sa_bonus(stack_a);
+		else if (ft_strcmp(line, "sb\n") == 0)
+			sb_bonus(stack_b);
 		else if (ft_strcmp(line, "ss\n") == 0)
 			ss_bonus(stack_a, stack_b);
 		else if (ft_strcmp(line, "pa\n") == 0)
@@ -121,20 +115,21 @@ int	ft_push(t_list **stack_a, t_list **stack_b)
 			rr_bonus(stack_a, stack_b);
 		else if (ft_strcmp(line, "rrb\n") == 0)
 			rrb_bonus(stack_b);
-		if (ft_strcmp(line, "rra\n") == 0)
+		else if (ft_strcmp(line, "rra\n") == 0)
 			rra_bonus(stack_a);
 		else if (ft_strcmp(line, "rrr\n") == 0)
 			rrr_bonus(stack_a, stack_b);
+		free(line);
 		line = get_next_line(0);
 	}
 	return (0);
 }
 
-void	displaylist_list(t_list **current)
+void	displaylist_list(t_list *current)
 {
 	t_list	*temp;
 
-	temp = *current;
+	temp = current;
 	while (temp != NULL)
 	{
 		printf("%d \n", temp->value);
@@ -147,19 +142,26 @@ int	main(int argc, char **argv)
 	t_list	*stack_a;
 	t_list	*stack_b;
 
-	(void)argc;
 	if (argc == 1)
 		return (0);
 	if (ft_full_bonus(&stack_a, argv, argc) == 1)
+	{
+		free_list(stack_a);
+		system("leaks checker_bonus");
 		return (0);
+	}
 	if (is_sorted_bonus(stack_a) == 1)
 	{
 		ft_putstr_fd_bonus("OK\n", 1);
+		free_list(stack_a);
+		system("leaks checker_bonus");
 		return (0);
 	}
 	if (ft_push(&stack_a, &stack_b) == 1)
 	{
 		ft_putstr_fd_bonus("Error\n", 1);
+		free_list(stack_a);
+		system("leaks checker_bonus");
 		return (0);
 	}
 	if (is_sorted_bonus(stack_a) == 1 && !stack_b)
@@ -167,8 +169,10 @@ int	main(int argc, char **argv)
 	else
 		ft_putstr_fd_bonus("KO\n", 1);
 	// printf("stack __________________a\n");
-	// displayList_list(&stack_a);
+	// displaylist_list(stack_a);
 	// printf("stack __________________b\n");
-	// displayList_list(&stack_b);
+	// displaylist_list(stack_b);
+	free_list(stack_a);
+	system("leaks checker_bonus");
 	return (0);
 }
