@@ -26,10 +26,16 @@ SOURCES_BONUS = checker/main.c \
 			checker/get_next_line.c \
 			checker/get_next_line_utils.c \
 			checker/list_bonus.c \
-			checker/use_bonus.c \
-			checker/operation_bonus.c \
+			 checker/split_bonus.c \
+			checker/push_bonus.c \
+			checker/swap_bonus.c \
+			checker/rotate_bonus.c \
+			checker/reverse_rotate_bonus.c \
+			checker/full_bonus.c 	\
 			checker/free_bonus.c \
-			# checker/split_bonus.c
+			 checker/use_bonus.c \
+			 checker/errors_bonus.c \
+			 checker/ft_action_bonus.c \
 
 
 BOBJECTS = $(SOURCES_BONUS:.c=.o)

@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: zel-harb <zel-harb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/26 09:47:07 by zel-harb          #+#    #+#             */
-/*   Updated: 2024/02/26 09:52:22 by zel-harb         ###   ########.fr       */
+/*   Created: 2024/02/23 08:43:55 by zel-harb          #+#    #+#             */
+/*   Updated: 2024/02/26 18:03:32 by zel-harb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
- char	**ft_free(char **s, int j)
+char	**ft_free(char **s, int j)
 {
 	int	i;
 
@@ -106,18 +106,4 @@ char	**ft_split(char const *s, char c)
 	len = count_words(s, c);
 	word = set_word(s, c, len);
 	return (word);
-}
-
-void	full_split(t_list **stack_a, char **argv)
-{
-	t_list	*new;
-	int		i;
-
-	i = 0;
-	while (argv[i])
-	{
-		new = ft_lstnew_bonus(ft_atoi_bonus(argv[i]));
-		ft_lstadd_back_bonus(stack_a, new);
-		i++;
-	}
 }

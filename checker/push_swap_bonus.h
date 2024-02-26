@@ -6,7 +6,7 @@
 /*   By: zel-harb <zel-harb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 08:43:29 by zel-harb          #+#    #+#             */
-/*   Updated: 2024/02/26 09:52:43 by zel-harb         ###   ########.fr       */
+/*   Updated: 2024/02/26 18:44:08 by zel-harb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,10 @@ void				displaylist_list(t_list *current);
 void				free_list(t_list *head);
 void				full_split(t_list **stack_a, char **argv);
 char				**ft_free(char **s, int j);
+int					count_words(char const *s, char c);
+char				**ft_split(char const *s, char c);
+int					check_non_number(char **argv, int argc);
+int					valide_args_bonus(char **argv, int argc);
+int					ft_push(t_list **stack_a, t_list **stack_b);
+int	ft_strcmp(char *s1, char *name_moves);
 #endif
