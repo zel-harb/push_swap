@@ -79,7 +79,7 @@ int	main(int argc, char **argv)
 	}
 	check_sort(stack_a, stack_b);
 	free_list(stack_a);
-	if(ft_lstsize_bonus(stack_b)!=0)
+	if (ft_lstsize_bonus(stack_b) != 0)
 		free_list(stack_b);
 	return (0);
 }

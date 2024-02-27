@@ -74,7 +74,7 @@ void	full_split(t_list **stack_a, char **argv)
 	}
 }
 
-int	ft_full(t_list **stack, char **argv,int argc)
+int	ft_full(t_list **stack, char **argv, int argc)
 {
 	char	**str;
 	int		count;

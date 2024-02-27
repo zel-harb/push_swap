@@ -72,5 +72,5 @@ char				**ft_split(char const *s, char c);
 int					check_non_number(char **argv, int argc);
 int					valide_args_bonus(char **argv, int argc);
 int					ft_push(t_list **stack_a, t_list **stack_b);
-int	ft_strcmp(char *s1, char *name_moves);
+int					ft_strcmp(char *s1, char *name_moves);
 #endif

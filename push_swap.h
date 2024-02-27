@@ -36,7 +36,7 @@ typedef struct s_para
 
 // list
 t_list				*ft_lstnew(int content);
-void				ft_lstadd_back	(t_list **lst, t_list *new);
+void				ft_lstadd_back(t_list **lst, t_list *new);
 void				ft_lstadd_front(t_list **lst, t_list *new);
 t_list				*ft_lstlast(t_list *lst);
 int					ft_lstsize(t_list *lst);
@@ -83,7 +83,7 @@ void				algo_sort(t_list **stack_a, t_list **stack_b,
 void				full_moves(t_list **stack_a);
 int					get_min(t_list *stack);
 int					is_be(t_list *stack_a, int integer);
-long double				ft_atoi(char *str);
+long double			ft_atoi(char *str);
 // display
 
 void				full_array(int *table, int size, t_list *stack_a);
@@ -96,7 +96,7 @@ void				push_b_to_a(t_list **stack_a, t_list **stack_b, int *table,
 int					check_error(char **argv, int argc);
 // int check_double(char **argv,int argc);
 char				**ft_split(char const *s, char c);
-int					ft_full(t_list **stack, char **argv,int argc);
+int					ft_full(t_list **stack, char **argv, int argc);
 
 void				full_split(t_list **stack_a, char **argv);
 int					count_words(char const *s, char c);
@@ -117,8 +117,7 @@ void				on_stack_a(t_list **stack_a, t_list **stack_b, int *k);
 char				**ft_free(char **s, int j);
 int					count_words(char const *s, char c);
 char				**ft_split(char const *s, char c);
-void 				free_t_para(t_para *ptr);
+void				free_t_para(t_para *ptr);
 int					valide_args(char **argv, int argc);
-
 
 #endif

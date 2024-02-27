@@ -42,6 +42,3 @@ void	free_t_para(t_para *ptr)
 {
 	free(ptr);
 }
-
-
-

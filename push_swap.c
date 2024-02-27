@@ -68,7 +68,7 @@ int	main(int argc, char **argv)
 
 	if (argc == 1)
 		return (0);
-	if (ft_full	(&stack_a, argv,argc) == 1)
+	if (ft_full(&stack_a, argv, argc) == 1)
 	{
 		free_list(stack_a);
 		return (0);
