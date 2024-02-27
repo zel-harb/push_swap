@@ -18,7 +18,8 @@ SOURCES = push_swap.c \
 	split.c \
 	free.c \
 	utilise_push.c \
-	full_split.c
+	full_split.c	\
+	valide_args.c 
 
 OBJECTS = $(SOURCES:.c=.o)
 

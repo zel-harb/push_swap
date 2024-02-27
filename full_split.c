@@ -6,7 +6,7 @@
 /*   By: zel-harb <zel-harb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 13:26:24 by zel-harb          #+#    #+#             */
-/*   Updated: 2024/02/26 11:17:13 by zel-harb         ###   ########.fr       */
+/*   Updated: 2024/02/27 14:51:52 by zel-harb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,14 +74,19 @@ void	full_split(t_list **stack_a, char **argv)
 	}
 }
 
-int	ft_full(t_list **stack, char **argv)
+int	ft_full(t_list **stack, char **argv,int argc)
 {
 	char	**str;
 	int		count;
 	int		i;
 
-	i = 1;
-	while (argv[i])
+	i = 0;
+	if (valide_args(argv, argc) == 0)
+	{
+		ft_putstr_fd("Error\n", 1);
+		return (1);
+	}
+	while (argv[++i])
 	{
 		str = ft_split(argv[i], ' ');
 		count = count_words(argv[i], ' ');
@@ -92,7 +97,6 @@ int	ft_full(t_list **stack, char **argv)
 		}
 		full_split(stack, str);
 		ft_free(str, count);
-		i++;
 	}
 	if (check_double(*stack))
 		return (1);

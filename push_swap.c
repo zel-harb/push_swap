@@ -6,7 +6,7 @@
 /*   By: zel-harb <zel-harb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 19:23:34 by zel-harb          #+#    #+#             */
-/*   Updated: 2024/02/25 02:14:19 by zel-harb         ###   ########.fr       */
+/*   Updated: 2024/02/27 15:18:55 by zel-harb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	main(int argc, char **argv)
 
 	if (argc == 1)
 		return (0);
-	if (ft_full(&stack_a, argv) == 1)
+	if (ft_full	(&stack_a, argv,argc) == 1)
 	{
 		free_list(stack_a);
 		return (0);
