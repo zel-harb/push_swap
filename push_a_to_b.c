@@ -6,13 +6,13 @@
 /*   By: zel-harb <zel-harb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 11:52:37 by zel-harb          #+#    #+#             */
-/*   Updated: 2024/02/24 16:34:02 by zel-harb         ###   ########.fr       */
+/*   Updated: 2024/02/27 16:13:07 by zel-harb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	choice_move(t_list **stack_a, int *table, int the_end, int start)
+void	ra_move(t_list **stack_a, int *table, int the_end, int start)
 {
 	int	i;
 	int	j;
@@ -68,7 +68,7 @@ void	a_to_b(t_list **stack_a, t_list **stack_b, t_para *para, int *table)
 		else
 		{
 			full_moves(stack_a);
-			choice_move(stack_a, table, para->the_end, para->start);
+			ra_move(stack_a, table, para->the_end, para->start);
 			pb(stack_a, stack_b);
 			if ((*stack_b)->value < table[para->mid])
 				rb(stack_b);

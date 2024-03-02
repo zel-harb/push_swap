@@ -6,13 +6,13 @@
 /*   By: zel-harb <zel-harb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 14:52:51 by zel-harb          #+#    #+#             */
-/*   Updated: 2024/02/27 15:27:44 by zel-harb         ###   ########.fr       */
+/*   Updated: 2024/02/27 15:41:54 by zel-harb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	valide_args1(int size, int argc, char **argv)
+int	valide_args_zero(int size, int argc, char **argv)
 {
 	int	i;
 
@@ -68,7 +68,7 @@ int	valide_args(char **argv, int argc)
 	size = ft_strlen(argv[i]);
 	if (size == 0)
 		return (0);
-	if (valide_args1(size, argc, argv) == 0)
+	if (valide_args_zero(size, argc, argv) == 0)
 		return (0);
 	if (valide_args_vide(argv, argc) == 0)
 		return (0);

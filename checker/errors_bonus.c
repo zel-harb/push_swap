@@ -6,7 +6,7 @@
 /*   By: zel-harb <zel-harb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 17:49:22 by zel-harb          #+#    #+#             */
-/*   Updated: 2024/02/26 17:49:38 by zel-harb         ###   ########.fr       */
+/*   Updated: 2024/02/27 16:39:24 by zel-harb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	check_double_bonus(t_list *stack)
 		{
 			if (tmp1->value == tmp2->value)
 			{
-				ft_putstr_fd_bonus("Error\n", 1);
+				ft_putstr_fd_bonus("Error\n", 2);
 				return (1);
 			}
 			tmp2 = tmp2->next;
@@ -45,7 +45,7 @@ int	check_intervalle(char **argv, int argc)
 		if (ft_atoi_bonus(argv[i]) > INT_MAX
 			|| ft_atoi_bonus(argv[i]) < INT_MIN)
 		{
-			ft_putstr_fd_bonus("Error\n", 1);
+			ft_putstr_fd_bonus("Error\n", 2);
 			return (1);
 		}
 		i++;
@@ -87,7 +87,7 @@ int	check_non_number(char **argv, int argc)
 		{
 			if (mcheck_non_number(argv, i, j) == 1)
 			{
-				ft_putstr_fd_bonus("Error\n", 1);
+				ft_putstr_fd_bonus("Error\n", 2);
 				return (1);
 			}
 			j++;

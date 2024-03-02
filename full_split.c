@@ -6,7 +6,7 @@
 /*   By: zel-harb <zel-harb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 13:26:24 by zel-harb          #+#    #+#             */
-/*   Updated: 2024/02/27 14:51:52 by zel-harb         ###   ########.fr       */
+/*   Updated: 2024/02/27 16:36:09 by zel-harb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	ft_full(t_list **stack, char **argv, int argc)
 	i = 0;
 	if (valide_args(argv, argc) == 0)
 	{
-		ft_putstr_fd("Error\n", 1);
+		ft_putstr_fd("Error\n", 2);
 		return (1);
 	}
 	while (argv[++i])

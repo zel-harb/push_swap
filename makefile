@@ -1,7 +1,6 @@
 CC = cc 
 NAME = push_swap
 FLAGS = -Wall -Wextra -Werror
-#-fsanitize=address -g3
 CHECKER1= checker_bonus
 SOURCES = push_swap.c \
 	operations.c \

@@ -6,7 +6,7 @@
 /*   By: zel-harb <zel-harb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 18:08:51 by zel-harb          #+#    #+#             */
-/*   Updated: 2024/02/27 15:19:11 by zel-harb         ###   ########.fr       */
+/*   Updated: 2024/02/27 16:39:40 by zel-harb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	main(int argc, char **argv)
 	}
 	if (ft_push(&stack_a, &stack_b) == 1)
 	{
-		ft_putstr_fd_bonus("Error\n", 1);
+		ft_putstr_fd_bonus("Error\n", 2);
 		free_list(stack_a);
 		return (0);
 	}

@@ -6,7 +6,7 @@
 /*   By: zel-harb <zel-harb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 08:32:55 by zel-harb          #+#    #+#             */
-/*   Updated: 2024/02/24 13:23:39 by zel-harb         ###   ########.fr       */
+/*   Updated: 2024/02/27 16:07:09 by zel-harb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,6 @@ void	sort_3(t_list **stack)
 		rra(stack);
 	if ((*stack)->value > (*stack)->next->value)
 		sa(stack);
-}
-
-void	push_three(t_list **stack_a, t_list **stack_b)
-{
-	int	push;
-
-	push = 0;
-	while (5 - push > 3)
-	{
-		pb(stack_a, stack_b);
-		push++;
-	}
 }
 
 void	mini_sort_5(t_list **stack_a, t_list **stack_b, int number)
